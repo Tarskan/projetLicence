@@ -6,36 +6,7 @@
         <script src="https://kit.fontawesome.com/28132c3659.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <header>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark"> 
-            <a id="titre">P.M.U</a>
-            <div class="navbar-collapse collapse order-3 dual-collapse2"> 
-                <ul class="navbar-nav ml-auto"> 
-                    <li class="nav-item"> 
-                    <a class="nav-link" href="#">Compte</a> 
-                    </li> 
-                    <li class="nav-item"> 
-                    <a class="nav-link" href="#"><i class="fas fa-address-book"></i> Panier</a> 
-                    </li> 
-                </ul> 
-            </div> 
-        </nav> 
-        <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Produit</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Conseil</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        </header>
+        <?php include_once('header.php'); ?>
         <main>
            <div>
                <div class="row ml-1 p-2">
@@ -43,9 +14,6 @@
                         <div class="row shadow-sm p-3 m-1 mb-5 bg-white rounded">
                             <div class="row p-3 mb-2 bg-dark text-white shadow-sm p-3 mb-5 rounded">
                                 <a>Recherche produit</a>
-                            </div>
-                            <div class="row shadow-sm p-3 mb-5 bg-white rounded">
-
                                 <button type="button" class="btn btn-primary">Ok</button>
                             </div>
                         </div>
@@ -71,10 +39,7 @@
                </div>
            </div>
         </main>
-        <footer>
-            <div>                
-            </div>
-        </footer>
+        <?php include_once('footer.php'); ?>
 
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.js"></script>
