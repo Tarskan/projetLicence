@@ -1,8 +1,8 @@
 <html lang="fr">
     <head>
         <title>P.M.U</title>
-        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../css/indexcss.css">
+        <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../public/css/indexcss.css">
         <script src="https://kit.fontawesome.com/28132c3659.js" crossorigin="anonymous"></script>
     </head>
     <body>
@@ -41,7 +41,7 @@
         </main>
         <?php include_once('footer.php'); ?>
 
-        <script src="../js/jquery.js"></script>
-        <script src="../js/bootstrap.js"></script>
+        <script src="../public/js/jquery.js"></script>
+        <script src="../public/js/bootstrap.js"></script>
     </body>
 </html>
