@@ -9,7 +9,7 @@
         <?php include_once('header.php'); ?>
         <main>
            <div>
-               <div class="row ml-1 p-2">
+               <!-- <div class="row ml-1 p-2">
                     <div class="col-3">
                         <div class="row shadow-sm p-3 m-1 mb-5 bg-white rounded">
                             <div class="row p-3 mb-2 bg-dark text-white shadow-sm p-3 mb-5 rounded">
@@ -36,7 +36,7 @@
                             <li>vis</li>
                         </ul>
                     </div>    
-               </div>
+               </div> -->
            </div>
         </main>
         <?php include_once('footer.php'); ?>
