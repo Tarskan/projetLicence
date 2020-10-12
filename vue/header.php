@@ -19,10 +19,44 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item"> 
-                    <a class="nav-link" href="#">Compte</a> 
+                <!-- Activateur du modal bootstrap pour connexion -->
+                    <a class="nav-link"  data-toggle="modal" data-target="#connexion">Compte</a>
+                    
+                        <!-- Modal ou fenetre d'affichage-->
+                    <div class="modal fade" id="connexion" tabindex="-1" role="dialog" aria-labelledby="popconnexion" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title " id="exampleModalLongTitle">Connexion</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="index.php" method="post">
+                                        <input type="text" name="username" placeholder="Identifiant"></br>
+                                        <input type="password" name="password" placeholder="Mot de passe"></br>
+                                        <?php
+                                            if (isset($loginErr)) { ?>
+                                                <div class="loginErr"><?php echo $loginErr; ?></div>
+                                            <?php }
+                                        ?>
+                                        <input class="submit" type="submit" name="login" value="connexion">
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="text-center"><i class="far fa-copyright"></i> 2020 ******, Inc. All rights reserved.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li> 
                 <li class="nav-item"> 
-                    <a class="nav-link" href="#">Panier</a> 
+                    <a class="nav-link" href="#">Panier</a>
+                </li>
+                <li>
+                    <i class="panier fas fa-cart-arrow-down"></i>
+                    <span class="panier">0</span>
                 </li>
             </ul>
         </div>
