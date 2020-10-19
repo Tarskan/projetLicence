@@ -1,6 +1,6 @@
 <html lang="fr">
     <?php include_once('../public/template/head.php'); ?>
-    <link rel="stylesheet" type="text/css" href="../public/css/indexcss.css">
+
     <body>
     
         <?php include_once('../public/template/header.php'); ?>

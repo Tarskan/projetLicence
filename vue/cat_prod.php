@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                     <div class="col-4">
-                                        <div class="card border border-dark  shadow-sm bg-dark  text-white rounded">
+                                        <div class="card border border-dark shadow-sm bg-dark text-white rounded">
                                             <img src="../public/img/vis.jpg" class="card-img-top" alt="Vis">
                                             <div class="card-body">
                                                 <div class="row">
