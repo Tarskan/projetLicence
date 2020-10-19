@@ -1,47 +1,62 @@
 <html lang="fr">
-    <head>
-        <title>P.M.U</title>
-        <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.css">
-        <link rel="stylesheet" type="text/css" href="../public/css/indexcss.css">
-        <script src="https://kit.fontawesome.com/28132c3659.js" crossorigin="anonymous"></script>
-    </head>
+    <?php include_once('../public/template/head.php'); ?>
+    <link rel="stylesheet" type="text/css" href="../public/css/indexcss.css">
     <body>
-        <?php include_once('header.php'); ?>
+    
+        <?php include_once('../public/template/header.php'); ?>
+
         <main>
-           <div>
-               <!-- <div class="row ml-1 p-2">
+<!--  /////////////////////////////////////////////Catégorié et conseil/////////////////////////////////////////////////// -->
+           <div class="container-fluid">
+               <div class="row ml-1 p-2">
                     <div class="col-3">
-                        <div class="row shadow-sm p-3 m-1 mb-5 bg-white rounded">
-                            <div class="row p-3 mb-2 bg-dark text-white shadow-sm p-3 mb-5 rounded">
-                                <a>Recherche produit</a>
-                                <button type="button" class="btn btn-primary">Ok</button>
+                        <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
+                            <div class="col">
+                                <a>Catégorie :</a>
+                                <ul>
+                                    <li>vis</li>
+                                </ul>
                             </div>
                         </div>
                         <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
-                            <a>Catégorie</a>
-                            <ul>
-                                <li>vis</li>
-                            </ul>
+                            <div class="col">
+                                <a>Conseil</a>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <iframe width="320" height="185" src="https://www.youtube.com/embed/grFK-PqOKp8" frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                    </div>
+<!--  /////////////////////////////////////////////Promotion/////////////////////////////////////////////////// -->
+                    <div class="col-6">
                         <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
-                            <a>Conseil</a>
+                            <div class="col">
+                                <div class="">
+                                    <a>Promotion</a>
+                                    <div style="width:100%;height:0;padding-bottom:106%;position:relative;"><iframe src="https://giphy.com/embed/LW0bpr12KBVEQ" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/coffee-doom-doomguy-LW0bpr12KBVEQ">via GIPHY</a></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-5 shadow-sm m-1 p-2 mb-5 bg-white rounded">
-                        <h2>Promotion</h2> 
-                    </div>
-                    <div class="col-3 shadow-sm m-1 p-2 mb-5 bg-white rounded">
-                        <a>Meilleurs Vente</a>
-                        <ul>
-                            <li>vis</li>
-                        </ul>
-                    </div>    
-               </div> -->
+<!--  /////////////////////////////////////////////Meilleurs vente/////////////////////////////////////////////////// -->
+                    <div class="col-3">
+                        <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
+                            <div class="col">
+                                <a>Meilleur vente :</a>
+                                <ul>
+                                    <li>vis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>   
+               </div>
            </div>
         </main>
-        <?php include_once('footer.php'); ?>
 
-        <script src="../public/js/jquery.js"></script>
-        <script src="../public/js/bootstrap.js"></script>
+        <?php include_once('../public/template/footer.php'); ?>
+
     </body>
 </html>
