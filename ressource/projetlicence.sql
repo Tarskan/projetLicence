@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3308
--- Généré le :  lun. 28 sep. 2020 à 13:48
--- Version du serveur :  8.0.18
--- Version de PHP :  7.3.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mer. 28 oct. 2020 à 10:18
+-- Version du serveur :  8.0.21
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `projetlicence`
+-- Base de données : `projetlicence`
 --
 
 -- --------------------------------------------------------
@@ -30,12 +29,18 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `categorie_produit`;
 CREATE TABLE IF NOT EXISTS `categorie_produit` (
-  `id_cat_prod` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cat_prod` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) NOT NULL,
-  `id_prod` int(11) NOT NULL,
-  PRIMARY KEY (`id_cat_prod`),
-  KEY `fk_prod_cat` (`id_prod`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_cat_prod`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `categorie_produit`
+--
+
+INSERT INTO `categorie_produit` (`id_cat_prod`, `libelle`) VALUES
+(1, 'Vis'),
+(2, 'Poulie');
 
 -- --------------------------------------------------------
 
@@ -45,11 +50,9 @@ CREATE TABLE IF NOT EXISTS `categorie_produit` (
 
 DROP TABLE IF EXISTS `categorie_utilisateur`;
 CREATE TABLE IF NOT EXISTS `categorie_utilisateur` (
-  `id_cat` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cat` int NOT NULL AUTO_INCREMENT,
   `libellé` varchar(255) NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
-  PRIMARY KEY (`id_cat`),
-  KEY `fk_utili_cat` (`id_utilisateur`)
+  PRIMARY KEY (`id_cat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -60,11 +63,11 @@ CREATE TABLE IF NOT EXISTS `categorie_utilisateur` (
 
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
-  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
-  `quantité` int(11) NOT NULL,
+  `id_commande` int NOT NULL AUTO_INCREMENT,
+  `quantité` int NOT NULL,
   `date` date NOT NULL,
-  `id_utilisateur` int(11) NOT NULL,
-  `id_produit` int(11) NOT NULL,
+  `id_utilisateur` int NOT NULL,
+  `id_produit` int NOT NULL,
   PRIMARY KEY (`id_commande`),
   KEY `fk_utilisateur` (`id_utilisateur`),
   KEY `fk_produit` (`id_produit`)
@@ -80,7 +83,7 @@ DROP TABLE IF EXISTS `objet`;
 CREATE TABLE IF NOT EXISTS `objet` (
   `chemin` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `id_prod` int(11) NOT NULL,
+  `id_prod` int NOT NULL,
   PRIMARY KEY (`chemin`),
   KEY `fk_prod_objet` (`id_prod`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -93,12 +96,14 @@ CREATE TABLE IF NOT EXISTS `objet` (
 
 DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
-  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
-  `reference` int(11) NOT NULL,
-  `quantité` int(11) NOT NULL,
-  `prix_unitaire` int(11) NOT NULL,
-  `libelle` int(11) NOT NULL,
-  PRIMARY KEY (`id_produit`)
+  `id_produit` int NOT NULL AUTO_INCREMENT,
+  `reference` int NOT NULL,
+  `quantité` int NOT NULL,
+  `prix_unitaire` int NOT NULL,
+  `libelle` int NOT NULL,
+  `id_cat` int NOT NULL,
+  PRIMARY KEY (`id_produit`),
+  KEY `fk_cat` (`id_cat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -109,17 +114,19 @@ CREATE TABLE IF NOT EXISTS `produit` (
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) NOT NULL,
   `Prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `MDP` varchar(255) NOT NULL,
   `Raison` varchar(255) NOT NULL,
   `adresse` varchar(255) NOT NULL,
-  `codepostal` int(5) NOT NULL,
+  `codepostal` int NOT NULL,
   `ville` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_cat` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cat_util` (`id_cat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 COMMIT;
 
