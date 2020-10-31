@@ -1,9 +1,9 @@
 <?php  
-
-    include_once('../controller/ConnexionBdd.php');
-    include_once('../controller/CategorieManager.php');
-    include_once('../controller/Categorie.php');
-    include_once('../controller/ArticleManager.php');
+    include_once('../public/template/session.php');
+    include_once('../models/ConnexionBdd.php');
+    include_once('../models/CategorieManager.php');
+    include_once('../models/Categorie.php');
+    include_once('../models/ArticleManager.php');
 
 
     $categories = [];

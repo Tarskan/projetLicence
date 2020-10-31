@@ -27,49 +27,36 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">Connexion</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link">Panier <span><i class="fas fa-cart-arrow-down"></i> 0</span></a>
         </li>
+        <li class="nav-item">
+        <?php
+        if(isset($_SESSION['email'])){
+          echo('<a class="nav-link">');
+          echo $_SESSION['email'];
+          echo('</a>');
+          
+        } else {
+          echo('<a class="nav-link" data-toggle="modal" data-target="#exampleModal">Connexion</a>');
+        }
+        ?>
+        </li>
+        <?php
+        if(isset($_SESSION['email'])){
+          echo('<li class="nav-item">');
+          echo('<a class="nav-link" id="deconnexion" name="deconnexion" href="../public/template/deconnexion.php"><span class="fa fa-power-off fa-2x"></span></a>');
+          echo('</li>');
+        }
+        ?>
       </ul>   
       
       <!-- connexion -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="card">
-              <article class="card-body">
-                <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
-                <hr>
-                <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-user"></i></span>
-                      </div>
-                      <input name="mail" id="mail" class="form-control" placeholder="Email" type="email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                          <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                      </div>
-                      <input class="form-control" name="mdp" id="mdp" placeholder="******" type="password">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" id="connexion" class="btn btn-primary btn-block">Connexion</button>
-                  </div>
-                  <p class="text-center"><a href="#" class="btn">Vous avez perdu votre mot de passe ?</a></p>
-                  <p class="text-center"><a href="#" class="btn">Inscription</a></p>
-                </form>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php
+      if(isset($_SESSION['email'])){
+      } else {
+         include_once('../public/template/connexion.php');
+      }
+      ?>
     </div>
   </nav>
 </header>

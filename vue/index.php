@@ -1,3 +1,5 @@
+<?php include_once('../public/template/session.php'); ?>
+
 <html lang="fr">
     <?php include_once('../public/template/head.php'); ?>
 
