@@ -1,3 +1,27 @@
+<?php  
+
+    include_once('../controller/ConnexionBdd.php');
+    include_once('../controller/CategorieManager.php');
+    include_once('../controller/Categorie.php');
+    include_once('../controller/ArticleManager.php');
+
+
+    $categories = [];
+    $article = [];
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $Cat_man = new CategorieManager();
+    $Art_man = new articleManager();
+
+    $article = $Art_man->getList($_GET['categorie']);
+    $categories = $Cat_man->listeCategorie();
+    $tailleCategories = sizeof($categories);
+    $tailleArticle = sizeof($article);
+
+?>
+
+
+
 <html lang="fr">
     <?php include_once('../public/template/head.php'); ?>
     <body>
@@ -13,7 +37,12 @@
                             <div class="col">
                                 <a>Catégorie :</a>
                                 <ul>
-                                    <li>vis</li>
+                                    <?php 
+                                        for ($i=0; $i < $tailleCategories; $i++) { 
+                                            echo '<li> <a href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a></li> ';
+                                        }
+
+                                     ?>
                                 </ul>
                             </div>
                         </div>
@@ -24,14 +53,18 @@
                         <div class="row m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <div class="row">
+<?php
+    for ($i=0; $i < $tailleArticle; $i++) { 
+?>
+    
                                     <div class="col-4">
                                         <div class="card border border-dark  shadow-sm bg-dark  text-white rounded">
-                                            <img src="../public/img/vis.jpg" class="card-img-top" alt="Vis">
+                                            <img src=<?php echo '"'.$article[$i]->getImage().'"'?> class="card-img-top" alt="Vis">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <h5 class="card-title">Vis</h5>
-                                                        <span class="card-link">Prix : 0.80 ct</span>
+                                                        <h5 class="card-title"><?php echo $article[$i]->getLibelle() ?></h5>
+                                                        <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> ct</span>
                                                         <button class="card-link btn btn-success" name="info" id="info">Information</button>
                                                         <button class="card-link btn btn-success" name="acheter" id="acheter">Acheter</button>
                                                     </div>
@@ -39,22 +72,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-4">
-                                        <div class="card border border-dark shadow-sm bg-dark text-white rounded">
-                                            <img src="../public/img/vis.jpg" class="card-img-top" alt="Vis">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <h5 class="card-title">Vis</h5>
-                                                        <span class="card-link">Prix : 0.80 ct</span>
-                                                        <button class="card-link btn btn-success" name="info" id="info">Information</button>
-                                                        <button class="card-link btn btn-success" name="acheter" id="acheter">Acheter</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<?php
+    }
+?>
                             </div>
                         </div>
                     </div>

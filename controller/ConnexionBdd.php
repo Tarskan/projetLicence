@@ -8,7 +8,7 @@ class Connect
     private $connec_pseudo = '';
     private $connec_mdp = '';
 
-    public function __construct($connec_host = 'localhost', $connec_dbname = 'ecommerce', $connec_pseudo = 'root', $connec_mdp = ''){
+    public function __construct($connec_host = 'localhost', $connec_dbname = 'projetlicence', $connec_pseudo = 'root', $connec_mdp = ''){
         try {
             $this->db = new PDO('mysql:host='.$connec_host.';dbname='.$connec_dbname, $connec_pseudo, $connec_mdp);
             $this->db->exec("SET CHARACTER SET utf8");

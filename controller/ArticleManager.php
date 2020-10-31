@@ -1,5 +1,6 @@
 <?php
 
+include_once('Article.php');
 
 class articleManager
 {
@@ -125,8 +126,8 @@ class articleManager
     $articles = [];
     $DBase = new Connect();
     $db = $DBase->connexion();
-    $q = $db->prepare('SELECT article.id,image,description,prix from article 
-    join categorie on categorie.id = categorie where categorie = "'.$categorie.'" ');
+    $q = $db->prepare('SELECT id_produit,produit.libelle,description,prix_unitaire,chemin,image from objet join (produit 
+    join categorie_produit on categorie_produit.id_cat_prod = id_cat) on produit.id_produit = id_prod  where id_cat = "'.$categorie.'" ');
     $q->execute();
     while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
