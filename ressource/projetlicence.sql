@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 28 oct. 2020 à 10:18
+-- Généré le : sam. 31 oct. 2020 à 17:00
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.3.21
 
@@ -88,6 +88,14 @@ CREATE TABLE IF NOT EXISTS `objet` (
   KEY `fk_prod_objet` (`id_prod`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `objet`
+--
+
+INSERT INTO `objet` (`chemin`, `image`, `id_prod`) VALUES
+('../public/img/vis.jpg', 'vis', 1),
+('../public/img/visLong.jpg', 'Vis long', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -97,14 +105,23 @@ CREATE TABLE IF NOT EXISTS `objet` (
 DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
   `id_produit` int NOT NULL AUTO_INCREMENT,
-  `reference` int NOT NULL,
+  `reference` varchar(5) NOT NULL,
   `quantité` int NOT NULL,
   `prix_unitaire` int NOT NULL,
-  `libelle` int NOT NULL,
+  `libelle` varchar(255) NOT NULL,
+  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `id_cat` int NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `fk_cat` (`id_cat`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `produit`
+--
+
+INSERT INTO `produit` (`id_produit`, `reference`, `quantité`, `prix_unitaire`, `libelle`, `description`, `id_cat`) VALUES
+(1, 'A700', 10, 8, 'Vis', 'Ceci est une vis normale.', 1),
+(2, 'A701', 10, 9, 'Vis longue', 'Ceci est une vis longue.', 1);
 
 -- --------------------------------------------------------
 
