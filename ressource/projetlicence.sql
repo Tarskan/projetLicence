@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 31 oct. 2020 à 17:00
--- Version du serveur :  8.0.21
+-- Généré le : mar. 03 nov. 2020 à 11:06
+-- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `categorie_produit`;
 CREATE TABLE IF NOT EXISTS `categorie_produit` (
-  `id_cat_prod` int NOT NULL AUTO_INCREMENT,
+  `id_cat_prod` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(255) NOT NULL,
   PRIMARY KEY (`id_cat_prod`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -50,7 +50,7 @@ INSERT INTO `categorie_produit` (`id_cat_prod`, `libelle`) VALUES
 
 DROP TABLE IF EXISTS `categorie_utilisateur`;
 CREATE TABLE IF NOT EXISTS `categorie_utilisateur` (
-  `id_cat` int NOT NULL AUTO_INCREMENT,
+  `id_cat` int(11) NOT NULL AUTO_INCREMENT,
   `libellé` varchar(255) NOT NULL,
   PRIMARY KEY (`id_cat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -63,15 +63,39 @@ CREATE TABLE IF NOT EXISTS `categorie_utilisateur` (
 
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
-  `id_commande` int NOT NULL AUTO_INCREMENT,
-  `quantité` int NOT NULL,
+  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
+  `quantité` int(11) NOT NULL,
   `date` date NOT NULL,
-  `id_utilisateur` int NOT NULL,
-  `id_produit` int NOT NULL,
+  `id_utilisateur` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
   PRIMARY KEY (`id_commande`),
   KEY `fk_utilisateur` (`id_utilisateur`),
   KEY `fk_produit` (`id_produit`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `conseils`
+--
+
+DROP TABLE IF EXISTS `conseils`;
+CREATE TABLE IF NOT EXISTS `conseils` (
+  `id_cons` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) NOT NULL,
+  `libelle` varchar(255) NOT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `id_categ` int(11) NOT NULL,
+  PRIMARY KEY (`id_cons`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `conseils`
+--
+
+INSERT INTO `conseils` (`id_cons`, `titre`, `libelle`, `video`, `id_categ`) VALUES
+(1, 'Comment visser une vis', 'Avant de procéder au vissage, appliquez de la paraffine ou de la bougie sur le filet de la vis pour faciliter sa pénétration. Vissez progressivement : adaptez la vitesse de vissage au fur et à mesure.\r\nRegardez ce tuto pour visser comme un pro', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/6T9n-bxfU0E\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen class=\"align-self-start mr-3\"></iframe>', 1),
+(2, 'Quelle clé pour serrer un écrous, un raccord, ou un boulon ?', 'Vidéo d\'aide', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/2BDq-e4fAGw\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen class=\"align-self-start mr-3\"></iframe>', 3);
 
 -- --------------------------------------------------------
 
@@ -83,7 +107,7 @@ DROP TABLE IF EXISTS `objet`;
 CREATE TABLE IF NOT EXISTS `objet` (
   `chemin` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `id_prod` int NOT NULL,
+  `id_prod` int(11) NOT NULL,
   PRIMARY KEY (`chemin`),
   KEY `fk_prod_objet` (`id_prod`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -104,13 +128,13 @@ INSERT INTO `objet` (`chemin`, `image`, `id_prod`) VALUES
 
 DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
-  `id_produit` int NOT NULL AUTO_INCREMENT,
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(5) NOT NULL,
-  `quantité` int NOT NULL,
-  `prix_unitaire` int NOT NULL,
+  `quantité` int(11) NOT NULL,
+  `prix_unitaire` int(11) NOT NULL,
   `libelle` varchar(255) NOT NULL,
-  `description` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
-  `id_cat` int NOT NULL,
+  `description` text NOT NULL,
+  `id_cat` int(11) NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `fk_cat` (`id_cat`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
@@ -131,20 +155,27 @@ INSERT INTO `produit` (`id_produit`, `reference`, `quantité`, `prix_unitaire`, 
 
 DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `Nom` varchar(255) NOT NULL,
   `Prenom` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `MDP` varchar(255) NOT NULL,
   `Raison` varchar(255) NOT NULL,
   `adresse` varchar(255) NOT NULL,
-  `codepostal` int NOT NULL,
+  `codepostal` int(11) NOT NULL,
   `ville` varchar(255) NOT NULL,
   `tel` varchar(255) NOT NULL,
-  `id_cat` int NOT NULL,
+  `id_cat` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_cat_util` (`id_cat`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1234567892 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `Nom`, `Prenom`, `email`, `MDP`, `Raison`, `adresse`, `codepostal`, `ville`, `tel`, `id_cat`) VALUES
+(1234567891, 'Six', 'Tristan', 'sixtristan@orange.fr', 'tortue93', 'lol', 'dsdq', 59139, 'Wattginies', '26522156', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

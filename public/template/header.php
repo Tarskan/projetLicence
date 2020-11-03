@@ -5,19 +5,22 @@
       <span class="navbar-toggler-icon"></span>
     </button>
               
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse pl-5" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" href="/projetphp/vue/index.php">Accueil</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/projetphp/vue/cat_prod.php">Produit</a>
+          <a class="nav-link" href="cat_prod.php?categorie=1">Produit</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/projetphp/vue/lesConseils.php">Conseils</a>
         </li>
       </ul>
 <!--  /////////////////////////////////////////////Barre de Recherche/////////////////////////////////////////////////// -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <div class="p-3 bg-dark text-white">
+          <div class="pt-2 pb-2 bg-dark text-white">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-3" size="30" type="search" placeholder="Que cherchez vous ?" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit">Recherche</button>
