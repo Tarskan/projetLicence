@@ -13,7 +13,12 @@
     $Cat_man = new CategorieManager();
     $Art_man = new articleManager();
 
-    $article = $Art_man->getList($_GET['categorie']);
+    if(isset($_GET['categorie'])){
+        $article = $Art_man->getList($_GET['categorie']);
+    }
+    else{
+        $article = $Art_man->getList('%');
+    }
     $categories = $Cat_man->listeCategorie();
     $tailleCategories = sizeof($categories);
     $tailleArticle = sizeof($article);
@@ -59,13 +64,13 @@
     
                                     <div class="col-4">
                                         <div class="card border border-dark  shadow-sm bg-dark  text-white rounded">
-                                            <img src=<?php echo '"'.$article[$i]->getImage().'"'?> class="card-img-top" alt="Vis">
+                                            <img src=<?php echo '"'.$article[$i]->getImage().'"'?> class="card-img-top" alt="<?php echo $article[$i]->getNomImage()?>">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col">
                                                         <h5 class="card-title"><?php echo $article[$i]->getLibelle() ?></h5>
                                                         <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> ct</span>
-                                                        <button class="card-link btn btn-success" name="info" id="info">Information</button>
+                                                       <a href="pageProduit.php?id=<?php echo  $article[$i]->getId()?>"><button class="card-link btn btn-success" name="info" id="info">Information</button></a>
                                                         <button class="card-link btn btn-success" name="acheter" id="acheter">Acheter</button>
                                                     </div>
                                                 </div>

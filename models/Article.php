@@ -39,10 +39,8 @@ class Article
 			$this->_chemin = $donnees['chemin'];
 		}
 		if (isset($donnees['image'])) {
-			$this->_chemin = $donnees['image'];
-		}
-
-		
+			$this->_nomImage = $donnees['image'];
+		}	
 	}
 
 	public function getId()

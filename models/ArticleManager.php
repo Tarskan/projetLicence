@@ -127,7 +127,7 @@ class articleManager
     $DBase = new Connect();
     $db = $DBase->connexion();
     $q = $db->prepare('SELECT id_produit,produit.libelle,description,prix_unitaire,chemin,image from objet join (produit 
-    join categorie_produit on categorie_produit.id_cat_prod = id_cat) on produit.id_produit = id_prod  where id_cat = "'.$categorie.'" ');
+    join categorie_produit on categorie_produit.id_cat_prod = id_cat) on produit.id_produit = id_prod  where id_cat LIKE "'.$categorie.'" ');
     $q->execute();
     while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
@@ -160,7 +160,7 @@ class articleManager
     $informations = [];
     $DBase = new Connect();
     $db = $DBase->connexion();
-    $q = $db->prepare('SELECT id,image,description,prix,quantite from article where id = "'.$id.'" ');
+    $q = $db->prepare('SELECT id_produit,libelle,chemin,image,description,prix_unitaire,quantité from produit join objet on objet.id_prod = id_produit where id_produit = "'.$id.'" ');
     $q->execute();
     while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {

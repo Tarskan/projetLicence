@@ -1,4 +1,17 @@
-<?php include_once('../public/template/session.php'); ?>
+<?php  
+    include_once('../public/template/session.php');
+    include_once('../models/ConnexionBdd.php');
+    include_once('../models/CategorieManager.php');
+
+    $categories = [];
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $Cat_man = new CategorieManager();
+
+    $categories = $Cat_man->listeCategorie();
+    $tailleCategories = sizeof($categories);
+
+?>
 
 <html lang="fr">
     <?php include_once('../public/template/head.php'); ?>
@@ -12,11 +25,16 @@
            <div class="container-fluid">
                <div class="row ml-1 p-2">
                     <div class="col-3">
-                        <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
+                    <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <a>Catégorie :</a>
                                 <ul>
-                                    <li>vis</li>
+                                    <?php 
+                                        for ($i=0; $i < $tailleCategories; $i++) { 
+                                            echo '<li> <a href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a></li> ';
+                                        }
+
+                                     ?>
                                 </ul>
                             </div>
                         </div>
