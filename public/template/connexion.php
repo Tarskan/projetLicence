@@ -6,34 +6,34 @@
                     <h4 class="card-title text-center mb-4 mt-1">Connexion</h4>
                     <hr>
                     <form method="POST">
-                    <div class="form-group">
-                        <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i></span>
+                                </div>
+                                <input name="mail" id="mail" class="form-control" placeholder="Email" type="email">
+                            </div>
                         </div>
-                        <input name="mail" id="mail" class="form-control" placeholder="Email" type="email">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                </div>
+                                <input class="form-control" name="mdp" id="mdp" placeholder="******" type="password">
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        <div class="form-group">
+                            <button type="submit" name="connexion" id="connexion" class="btn btn-primary btn-block">Connexion</button>
                         </div>
-                        <input class="form-control" name="mdp" id="mdp" placeholder="******" type="password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" name="connexion" id="connexion" class="btn btn-primary btn-block">Connexion</button>
-                    </div>
-                    <?php
-                    if (isset($loginErr)) { 
-                        echo('<div class="text-center alert alert-danger">');  
-                        echo $loginErr ;
-                        echo('</div>');
-                    } 
-                    ?>
-                    <p class="text-center"><a href="#" class="btn">Vous avez perdu votre mot de passe ?</a></p>
-                    <p class="text-center"><a href="#" class="btn">Inscription</a></p>
+                        <?php
+                        if (isset($loginErr)) { 
+                            echo('<div class="text-center alert alert-danger">');  
+                            echo $loginErr ;
+                            echo('</div>');
+                        } 
+                        ?>
+                        <p class="text-center"><a href="#" class="btn">Vous avez perdu votre mot de passe ?</a></p>
+                        <p class="text-center"><a href="#" class="btn">Inscription</a></p>
                     </form>
                 </article>
             </div>

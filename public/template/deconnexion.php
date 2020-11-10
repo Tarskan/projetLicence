@@ -1,5 +1,5 @@
 <?php   
-session_start(); //to ensure you are using same session
-session_destroy(); //destroy the session
-header("location:/projetphp/vue/index.php"); //to redirect back to "index.php" after logging out
+session_start(); //On s'assure que tu récupére la bonne session
+session_destroy(); //Paf la session meurt
+header("location:/projetphp/vue/index.php"); //une fosi deconnecter on retourne a l'acceuille merci bonsoir
 ?>

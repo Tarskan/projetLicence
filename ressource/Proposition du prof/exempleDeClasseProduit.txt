@@ -1,0 +1,84 @@
+// exemple de classe de recherche de produit par list, catégorie ...
+// en utlisant la table produit du schéma précédent
+<?php
+
+class Produit {
+
+        public static function getProduitList() {
+                global $db;
+
+                $list = $db->query("SELECT * FROM Produit")->fetchAll(PDO::FETCH_CLASS, "Produit");
+
+                for($i = 0; $i < count($list); $i++) {
+                        if($list[$i]->promo !== "0") {
+                                $list[$i]->Libellé = $list[$i]->Libellé." (-".$list[$i]->promo."% de reduction)";
+                                $list[$i]->Prix_HT = $list[$i]->Prix_HT - ($list[$i]->Prix_HT * ($list[$i]->promo/100));
+                        }
+                }
+
+                return $list;
+        }
+
+        public< static function getProduitById($id) {
+                global $db;
+
+                $st = $db->prepare("SELECT * FROM Produit WHERE ID_Produit = ?");
+    $st->execute(array($id));
+    $produit = $st->fetchAll(PDO::FETCH_CLASS, "Produit")[0];
+
+                if($produit->promo !== "0") {
+                        $produit->Libellé = $produit->Libellé." (-".$produit->promo."% de reduction)";
+                        $produit->Prix_HT = $produit->Prix_HT - ($produit->Prix_HT * ($produit->promo/100));
+                }
+
+                return $produit;
+        }
+
+        public static function getProduitByCategorie($cat) {
+                global $db;
+
+                $st = $db->prepare("SELECT * FROM Produit WHERE ID_Catégorie = ?");
+    $st->execute(array($cat));
+    $list =  $st->fetchAll(PDO::FETCH_CLASS, "Produit");
+
+                for($i = 0; $i < count($list); $i++) {
+                        if($list[$i]->promo !== "0") {
+                                $list[$i]->Libellé = $list[$i]->Libellé." (-".$list[$i]->promo."% de reduction)";
+                                $list[$i]->Prix_HT = $list[$i]->Prix_HT - ($list[$i]->Prix_HT * ($list[$i]->promo/100));
+                        }
+                }
+
+                return $list;
+        }
+
+        public static function getProduitResearch($res) {
+                global $db;
+
+                $st = $db->prepare("SELECT * FROM Produit WHERE Libellé LIKE ?");
+                $st->execute(array("%$res%"));
+                $list = $st->fetchAll(PDO::FETCH_CLASS, "Produit");
+
+                for($i = 0; $i < count($list); $i++) {
+                        if($list[$i]->promo !== "0") {
+                                $list[$i]->Libellé = $list[$i]->Libellé." (-".$list[$i]->promo."% de reduction)";
+                                $list[$i]->Prix_HT = $list[$i]->Prix_HT - ($list[$i]->Prix_HT * ($list[$i]->promo/100));
+                        }
+                }
+
+                return $list;
+        }
+
+        public static function getPromo() {
+                global $db;
+
+                $list = $db->query("SELECT * FROM Produit WHERE promo != 0")->fetchAll(PDO::FETCH_CLASS, "Produit");
+                for($i = 0; $i < count($list); $i++) {
+                        $list[$i]->Libellé = $list[$i]->Libellé." (-".$list[$i]->promo."% de reduction)";
+                        $list[$i]->Prix_HT = $list[$i]->Prix_HT - ($list[$i]->Prix_HT * ($list[$i]->promo/100));
+                }
+
+                return $list;
+        }
+}
+
+?>

@@ -1,0 +1,387 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données :  `TP`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Categorie`
+--
+
+CREATE TABLE IF NOT EXISTS `Categorie` (
+`ID_Catégorie` int(11) NOT NULL,
+  `Libellé` varchar(1024) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Categorie`
+--
+
+INSERT INTO `Categorie` (`ID_Catégorie`, `Libellé`) VALUES
+(3, 'Bande'),
+(4, 'Autres'),
+(5, 'Support'),
+(6, 'Equerre'),
+(7, 'Poulie'),
+(8, 'Roue'),
+(9, 'Boulon'),
+(11, 'Plaque'),
+(12, 'Embase'),
+(13, 'Pneu'),
+(14, 'Raccord');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Clients`
+--
+
+CREATE TABLE IF NOT EXISTS `Clients` (
+`ID_Client` int(11) NOT NULL,
+  `Nom` varchar(1024) NOT NULL,
+  `Prenom` varchar(1024) NOT NULL,
+  `Adresse` varchar(1024) NOT NULL,
+  `Tel` varchar(1024) NOT NULL,
+  `Email` varchar(1024) NOT NULL,
+  `Login` varchar(1024) NOT NULL,
+  `Mot_de_passe` varchar(10000) NOT NULL,
+  `CB` varchar(1024) NOT NULL,
+  `Pseudo` varchar(1024) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Clients`
+--
+
+INSERT INTO `Clients` (`ID_Client`, `Nom`, `Prenom`, `Adresse`, `Tel`, `Email`, `Login`, `Mot_de_passe`, `CB`, `Pseudo`) VALUES
+(1, 'toto', 'titi', 'ORS', '06 46 06 42 19', 'toto@gmail.com', 'dov', '81dc9bdb52d04dc20036dbd8313ed055', '1234', 'dov'),
+(2, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(3, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(4, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(5, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(6, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(7, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(8, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(9, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(10, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(11, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(12, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(13, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(14, 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'),
+(15, 'testnom', 'testprenom', 'testadresse', 'testtel', 'testemail', 'testlogin', 'testmdp', 'testcb', 'testpseudo'),
+(16, 'jhdfvdsvfjdv', 'jv', 'jv', 'vhjv', 'v', 'login', '81dc9bdb52d04dc20036dbd8313ed055', 'hjv', 'h');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Commande`
+--
+
+CREATE TABLE IF NOT EXISTS `Commande` (
+`ID_Commande` int(11) NOT NULL,
+  `ID_Client` int(11) NOT NULL,
+  `ID_Produit` int(11) NOT NULL,
+  `Quantité` int(11) NOT NULL,
+  `Date_de_commande` date NOT NULL,
+  `prixPort` int(11) NOT NULL,
+  `vendue` tinyint(1) NOT NULL DEFAULT '0',
+  `idFacture` varchar(10000) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=249 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Commande`
+--
+
+INSERT INTO `Commande` (`ID_Commande`, `ID_Client`, `ID_Produit`, `Quantité`, `Date_de_commande`, `prixPort`, `vendue`, `idFacture`) VALUES
+(162, 1, 111, 1, '2018-12-04', 90, 1, '16223525'),
+(163, 1, 1, 1, '2018-12-04', 90, 1, '1350433736'),
+(164, 1, 10, 1, '2018-12-04', 90, 1, '1242311554'),
+(165, 1, 11, 1, '2018-12-04', 90, 1, '1242311554'),
+(166, 1, 111, 1, '2018-12-04', 90, 1, '1242311554'),
+(167, 1, 1, 1, '2018-12-04', 90, 1, '27059687'),
+(168, 1, 1, 1, '2018-12-04', 90, 1, '1835122208'),
+(169, 1, 1, 1, '2018-12-04', 90, 1, '1452939482'),
+(170, 1, 1, 1, '2018-12-04', 90, 1, '144946612'),
+(171, 1, 1, 1, '2018-12-04', 90, 1, '161322977'),
+(172, 1, 1, 1, '2018-12-04', 90, 1, '1798720652'),
+(173, 1, 1, 5, '2018-12-04', 90, 1, '1344420509'),
+(174, 1, 59, 1, '2018-12-04', 90, 1, '1442010484'),
+(175, 1, 1, 1, '2018-12-04', 90, 1, '1443590605'),
+(176, 1, 10, 1, '2018-12-04', 90, 1, '1443590605'),
+(177, 1, 11, 1, '2018-12-04', 90, 1, '1443590605'),
+(178, 1, 111, 1, '2018-12-04', 90, 1, '1443590605'),
+(179, 1, 1, 1, '2018-12-04', 90, 1, '1443590605'),
+(180, 1, 10, 1, '2018-12-04', 90, 1, '1443590605'),
+(181, 1, 11, 1, '2018-12-04', 90, 1, '1443590605'),
+(183, 1, 1, 1, '2018-12-04', 90, 1, '889169401'),
+(184, 1, 10, 1, '2018-12-04', 90, 1, '889169401'),
+(185, 1, 11, 1, '2018-12-04', 90, 1, '889169401'),
+(187, 1, 10, 2, '2018-12-04', 90, 1, '672126030'),
+(188, 1, 11, 1, '2018-12-04', 90, 1, '672126030'),
+(195, 1, 10, 1, '2018-12-04', 0, 1, '1772042046'),
+(196, 1, 126, 1, '2018-12-04', 0, 1, '1025121085'),
+(197, 1, 1, 2, '2018-12-04', 0, 1, '809229034'),
+(198, 1, 11, 2, '2018-12-04', 0, 1, '1148482558'),
+(199, 1, 12, 2, '2018-12-04', 0, 1, '724502039'),
+(200, 1, 12, 2, '2018-12-04', 0, 1, '215346480'),
+(202, 1, 24, 2, '2018-12-04', 0, 1, '1377959561'),
+(203, 1, 10, 1, '2018-12-04', 0, 1, '1471145090'),
+(204, 1, 10, 1, '2018-12-04', 0, 1, '1709867100'),
+(205, 1, 19, 1, '2018-12-04', 0, 1, '1709867100'),
+(206, 1, 20, 1, '2018-12-04', 0, 1, '412483939'),
+(207, 1, 20, 1, '2018-12-04', 0, 1, '135801006'),
+(208, 1, 119, 1, '2018-12-04', 0, 1, '135801006'),
+(209, 1, 187, 1, '2018-12-04', 0, 1, '135801006'),
+(210, 1, 10, 2, '2018-12-04', 0, 1, '944728356'),
+(211, 1, 11, 2, '2018-12-04', 0, 1, '769554416'),
+(212, 1, 142, 3, '2018-12-04', 0, 1, '15768030'),
+(213, 1, 10, 4, '2018-12-04', 0, 1, '15768030'),
+(214, 1, 188, 1, '2018-12-04', 0, 1, '785316336'),
+(215, 1, 1, 1, '2018-12-04', 0, 1, '785316336'),
+(218, 1, 1, 0, '2018-12-04', 0, 1, '785316336'),
+(219, 1, 19, 1, '2018-12-04', 0, 1, '913500924'),
+(220, 1, 20, 1, '2018-12-04', 0, 1, '913500924'),
+(223, 1, 10, 3, '2018-12-04', 0, 1, '913500924'),
+(224, 1, 1, 1, '2018-12-04', 0, 1, '1852567193'),
+(225, 1, 1, 1, '2018-12-04', 0, 1, '1096063909'),
+(226, 1, 12, 1, '2018-12-04', 0, 1, '1846097857'),
+(228, 16, 10, 7, '2018-12-03', 0, 1, '1736600157'),
+(232, 1, 188, 1, '2018-12-04', 90, 1, '1826705172'),
+(234, 1, 24, 2, '2018-12-04', 90, 1, '1390296695'),
+(236, 1, 19, 1, '2018-12-04', 90, 1, '1947155837'),
+(237, 1, 19, 1, '2018-12-04', 90, 1, '1947155837'),
+(240, 1, 24, 1, '2018-12-04', 90, 1, '738457105'),
+(241, 1, 119, 1, '2018-12-04', 90, 1, '738457105'),
+(242, 1, 188, 1, '2018-12-04', 90, 1, '738457105'),
+(243, 1, 24, 1, '2018-12-04', 90, 1, '738457105'),
+(244, 1, 27, 1, '2018-12-04', 90, 1, '738457105'),
+(245, 1, 27, 1, '2018-12-04', 90, 1, '530737887'),
+(246, 1, 1, 1, '2018-12-04', 90, 1, '1199118747'),
+(247, 1, 1, 1, '2018-12-04', 90, 1, '1158865354'),
+(248, 1, 1, 1, '2018-12-04', 90, 1, '361346054');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Commentaire`
+--
+
+CREATE TABLE IF NOT EXISTS `Commentaire` (
+`ID_Commentaire` int(11) NOT NULL,
+  `ID_Client` int(11) NOT NULL,
+  `ID_Produit` int(11) NOT NULL,
+  `Commentaire` varchar(10000) NOT NULL,
+  `Date` date NOT NULL,
+  `Note` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Commentaire`
+--
+
+INSERT INTO `Commentaire` (`ID_Commentaire`, `ID_Client`, `ID_Produit`, `Commentaire`, `Date`, `Note`) VALUES
+(51, 0, 115, 'bon produit', '2018-10-24', 10),
+(52, 1, 115, 'bon produit', '2018-10-24', 10),
+(53, 1, 115, 'test', '2018-10-24', 4),
+(54, 1, 10, 'bon produit', '2018-10-24', 10),
+(55, 1, 1, 'null a chier', '2018-10-24', 0),
+(56, 1, 115, 'ce prouit est a chier', '2018-10-25', 1),
+(57, 1, 1, 'test', '2018-10-26', 10),
+(58, 1, 1, 'testtest', '2018-10-26', 5),
+(59, 1, 1, 't', '2018-10-26', 4),
+(60, 1, 10, 'dd', '2018-11-12', 2),
+(61, 1, 10, 'ee', '2018-11-12', 0),
+(62, 1, 10, 'c est de la merder', '2018-11-12', 0),
+(63, 1, 1, 'testcom', '2018-12-03', 3),
+(64, 1, 1, 'kjbdfkhsdvfjhvsdhjfvjgsdvfjdshf', '2018-12-03', 6),
+(65, 1, 1, 'dsgsdgfs', '2018-12-03', 4),
+(66, 1, 2, 'dsfsdfd', '2018-12-03', 3),
+(67, 1, 2, 'dsfsdfd', '2018-12-03', 3),
+(68, 1, 2, 'dfdffdfdfdfdfdfdfdfd', '2018-12-03', 3),
+(69, 1, 1, 'kfbkjqdbfjkgbdfkj', '2018-12-04', 0),
+(70, 1, 111, 'Trés bon produit', '2018-12-04', 10);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Produit`
+--
+
+CREATE TABLE IF NOT EXISTS `Produit` (
+  `ID_Produit` varchar(100) NOT NULL,
+  `Libellé` varchar(1024) NOT NULL,
+  `image` varchar(2048) NOT NULL,
+  `Prix_HT` int(11) NOT NULL DEFAULT '100',
+  `TVA` int(11) NOT NULL DEFAULT '20',
+  `Q_Stock` int(11) NOT NULL DEFAULT '100',
+  `ID_Catégorie` int(11) NOT NULL,
+  `Description` varchar(10000) NOT NULL,
+  `prixPort` int(11) NOT NULL DEFAULT '90',
+  `view` int(11) NOT NULL,
+  `promo` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `Produit`
+--
+
+INSERT INTO `Produit` (`ID_Produit`, `Libellé`, `image`, `Prix_HT`, `TVA`, `Q_Stock`, `ID_Catégorie`, `Description`, `prixPort`, `view`, `promo`) VALUES
+('1', 'Bande perforée (25 trous)', 'bndPerfore.jpg', 100, 20, 83, 3, '25 trous', 90, 108, 50),
+('10', 'Support plat', 'supPlat.jpg', 100, 20, 92, 5, '', 90, 20, 0),
+('11', 'Support double (12x12 mm)', 'supDouble.jpg', 100, 20, 95, 5, '12x12 mm', 90, 0, 0),
+('111', 'Boulon (19 mm)', 'visLong.jpg', 100, 20, 99, 9, '19 mm', 90, 2, 0),
+('111a', 'Boulon (12 mm)', 'visLong.jpg', 100, 20, 100, 9, '12 mm', 90, 0, 0),
+('111c', 'Boulon (9.5 mm)', 'visLong.jpg', 100, 20, 100, 9, '9.5 mm', 90, 0, 0),
+('119', 'Cheville filetée', 'chevilleFilete.jpg', 100, 20, 99, 4, '', 90, 1, 0),
+('11a', 'Support double (12x25 mm)', 'supDouble.jpg', 100, 20, 100, 5, '12x25 mm', 90, 0, 0),
+('12', 'Equerre (12x12 mm)', 'Equerre90.jpg', 100, 20, 99, 6, '12x12 mm', 90, 1, 0),
+('125', 'Equerre renversée', 'equerreRenv.jpg', 100, 20, 100, 6, '', 90, 0, 0),
+('126', 'Embase tringulée coudée', 'trgEmbaseCoude.jpg', 100, 20, 100, 12, '', 90, 0, 0),
+('126a', 'Embase tringulée plate', 'trgEmbase.jpg', 100, 20, 100, 12, '', 90, 0, 0),
+('12a', 'Equerre (25x25 mm)', 'Equerre90.jpg', 100, 20, 100, 6, '25x25 mm', 90, 0, 0),
+('12c', 'Equerre à 135°', 'Equerre135.jpg', 100, 20, 100, 6, '', 90, 0, 0),
+('13', 'Tringle (29 cm)', 'tringle.jpg', 100, 20, 100, 4, '29 cm', 90, 1, 0),
+('14', 'Tringle (16.5 cm)', 'tringle.jpg', 100, 20, 100, 4, '16.5 cm', 90, 0, 0),
+('142c', 'Pneu (pour poulie 25 mm)', 'pneu4Poulie.jpg', 100, 20, 100, 13, '', 90, 0, 0),
+('147b', 'Boulon-pivot', 'boulonPivot.jpg', 100, 20, 100, 9, '', 90, 0, 0),
+('15', 'Tringle (13 cm)', 'tringle.jpg', 100, 20, 100, 4, '13 cm', 90, 0, 0),
+('155', 'Anneau de caoutchouc', 'anneauCaoutchouc.jpg', 100, 20, 100, 4, '', 90, 0, 0),
+('15a', 'Tringle (11.5 cm)', 'tringle.jpg', 100, 20, 100, 4, '11.5 cm', 90, 0, 0),
+('15b', 'Tringle (10 cm)', 'tringle.jpg', 100, 20, 100, 4, '10 cm', 90, 0, 0),
+('16', 'Tringle (9 cm)', 'tringle.jpg', 100, 20, 100, 4, '9 cm', 90, 0, 0),
+('17', 'Tringle (5 cm)', 'tringle.jpg', 100, 20, 100, 4, '5 cm', 90, 0, 0),
+('176', 'Ressort d''attache pour corde', 'ressortAttache.jpg', 100, 20, 100, 4, '', 90, 0, 0),
+('187', 'Pneu d''auto', 'pleuAuto.jpg', 100, 20, 100, 13, '', 90, 1, 0),
+('188', 'Plaque flexible (6x4 cm)', 'plqFlexible.jpg', 100, 20, 98, 11, '6x4 cm', 90, 1, 0),
+('189', 'Plaque flexible (14x4 cm)', 'plqFlexible.jpg', 100, 20, 100, 11, '14x4 cm', 90, 0, 0),
+('18a', 'Tringle (4 cm)', 'tringle.jpg', 100, 20, 100, 4, '4 cm', 90, 0, 0),
+('18b', 'Tringle (2.5 cm)', 'tringle.jpg', 100, 20, 100, 4, '2.5 cm', 90, 0, 0),
+('190', 'Plaque flexible', 'plqFlexible.jpg', 100, 20, 100, 11, '6x6 cm', 90, 0, 0),
+('191', 'Plaque flexible (11.5x6 cm)', 'plqFlexible.jpg', 100, 20, 100, 11, '11.5x6 cm', 90, 0, 0),
+('192', 'Plaque flexible (14x6 cm)', 'plqFlexible.jpg', 100, 20, 100, 11, '14x6 cm', 90, 0, 0),
+('193', 'Plaque plastique claire (6x4 cm)', 'plqPlstiqClair.jpg', 100, 20, 100, 11, '6x4 cm', 90, 0, 0),
+('193a', 'Plaque plastique claire (6x6 cm)', 'plqPlstiqClair.jpg', 100, 20, 100, 11, '6x6 cm', 90, 0, 0),
+('193c', 'Plaque plastique claire (11.5x6 cm)', 'plqPlstiqClair.jpg', 100, 20, 100, 11, '11.5x6 cm', 90, 0, 0),
+('193d', 'Plaque plastique claire (14x4 cm)', 'plqPlstiqClair.jpg', 100, 20, 100, 11, '14x4 cm', 90, 0, 0),
+('193e', 'Plaque plastique claire (14x6 cm)', 'plqPlstiqClair.jpg', 100, 20, 100, 11, '14x6 cm', 90, 0, 0),
+('194', 'Plaque plastique bleue (6x4 cm)', 'plqPlstiqBleu.jpg', 100, 20, 100, 11, '6x4 cm', 90, 0, 0),
+('194a', 'Plaque plastique bleue (6x6 cm)', 'plqPlstiqBleu.jpg', 100, 20, 100, 11, '6x6 cm', 90, 0, 0),
+('197', 'Plaque bande', 'plqBande.jpg', 100, 20, 100, 11, '32 cm', 90, 0, 0),
+('199', 'Plaque cintré en U', 'plqCintreU.jpg', 100, 20, 100, 11, '', 90, 0, 0),
+('19b', 'Poulie (75 mm)', 'poulie1.jpg', 100, 20, 97, 7, '75 mm', 90, 2, 0),
+('19g', 'Manivelle (9 cm)', 'manivelle.jpg', 100, 20, 100, 4, '9 cm', 90, 0, 0),
+('19h', 'Manivelle (12.5 cm)', 'manivelle.jpg', 100, 20, 100, 4, '12.5 cm', 90, 0, 0),
+('2', 'Bande perforée (11 trous)', 'bndPerfore.jpg', 100, 20, 100, 3, '11 trous', 90, 11, 0),
+('200', 'Plaque cintrée', 'plqCintree.jpg', 100, 20, 100, 11, '', 90, 0, 0),
+('20a', 'Poulie (5 cm)', 'poulie1.jpg', 100, 20, 99, 7, '5 cm', 90, 0, 0),
+('212', 'Raccord tringle et bande', 'rcdTringlBnd.jpg', 100, 20, 100, 14, '', 90, 0, 0),
+('212a', 'Raccord tringle et bande à angle droit', 'rcdTringlBnd90.jpg', 100, 20, 100, 14, '', 90, 0, 0),
+('213', 'Raccord de tringle', 'rcdTringle.jpg', 100, 20, 100, 14, '', 90, 0, 0),
+('214', 'Plaque semi-circulaire', 'plqDemiCirc.jpg', 100, 20, 100, 11, '', 90, 0, 0),
+('215', 'Bande cintrée à glissières', 'bndCintreGlisier.jpg', 100, 20, 100, 3, '', 90, 1, 0),
+('22', 'Poulie à moyeu', 'poulie2Moyeu.jpg', 100, 20, 100, 7, '25 mm', 90, 0, 0),
+('221', 'Plaque flexible triangulaire (6x4 cm)', 'plqFlexTrg.jpg', 100, 20, 100, 11, '6x4 cm', 90, 0, 0),
+('222', 'Plaque flexible triangulaire', 'plqFlexTrg.jpg', 100, 20, 100, 11, '6x5 cm', 90, 0, 0),
+('223', 'Plaque flexible triangulaire (6x6 cm)', 'plqFlexTrg.jpg', 100, 20, 100, 11, '6x6 cm', 90, 0, 0),
+('22a', 'Poulie sans moyeu', 'poulie2.jpg', 100, 20, 100, 7, '25 mm', 90, 0, 0),
+('23', 'Poulie sans moyeu', 'poulie.jpg', 100, 20, 100, 7, '12 mm', 90, 0, 0),
+('23a', 'Poulie à moyeu', 'poulieMoyeu.jpg', 100, 20, 100, 7, '12 mm', 90, 0, 0),
+('24', 'Roue Barillet', 'roueBarillet.jpg', 100, 20, 97, 8, '8 trous', 90, 2, 0),
+('24c', 'Disque', 'disque.jpg', 100, 20, 100, 4, '6 trous', 90, 0, 0),
+('26', 'Pignon de 19 dents', 'pignon.jpg', 100, 20, 100, 4, '12 mm diam.', 90, 0, 0),
+('27a', 'Roue de 57 dents', 'roueDentee.jpg', 100, 20, 98, 8, '38 mm diam.', 90, 2, 0),
+('3', 'Bande perforée (7 trous)', 'bndPerfore.jpg', 100, 20, 100, 3, '7 trous', 90, 0, 0),
+('35', 'Clavette', 'clavette.jpg', 100, 20, 100, 4, '', 90, 0, 0),
+('37a', 'Ecrou', 'ecrou.jpg', 100, 20, 100, 4, '', 90, 0, 0),
+('37b', 'Boulon', 'vis.jpg', 100, 20, 100, 9, '5 mm', 90, 0, 0),
+('38', 'Rondelle-Disque (9 mm diam.)', 'rondelle.jpg', 100, 20, 100, 4, '9 mm diam.', 90, 0, 0),
+('38d', 'Rondelle-Disque (19 mm diam.)', 'rondelle.jpg', 100, 20, 100, 4, '19 mm diam.', 90, 0, 0),
+('4', 'Bande perforée (6 trous)', 'bndPerfore.jpg', 100, 20, 100, 3, '6 trous', 90, 1, 0),
+('45', 'Cavalier', 'cavalier.jpg', 100, 20, 100, 4, '', 90, 0, 0),
+('48', 'Bande coudée (38x12 mm)', 'bndCoudee.jpg', 100, 20, 101, 3, '38x12 mm', 90, 0, 0),
+('48a', 'Bande coudée (60x12 mm)', 'bndCoudee.jpg', 100, 20, 100, 3, '60x12 mm', 90, 0, 0),
+('48b', 'Bande coudée (90x12 mm)', 'bndCoudee.jpg', 100, 20, 99, 3, '90x12 mm', 90, 0, 0),
+('5', 'Bande perforée (5 trous)', 'bndPerfore.jpg', 100, 20, 100, 3, '5 trous', 90, 0, 0),
+('51', 'Plaque à rebords (6x4 cm)', 'plqRebord.jpg', 100, 20, 100, 11, '6x4 cm', 90, 0, 0),
+('52', 'Plaque à rebords (14x6 cm)', 'plqRebord.jpg', 100, 20, 100, 11, '14x6 cm', 90, 0, 0),
+('53', 'Plaque à rebords (9x6 cm)', 'plqRebord.jpg', 100, 20, 100, 11, '9x6 cm', 90, 0, 0),
+('53a', 'Plaque sans rebords', 'plaque.jpg', 100, 20, 100, 11, '11.5 x 6 cm', 90, 0, 0),
+('54', 'Plaque secteur à rebords', 'plqSecteur.jpg', 100, 20, 100, 11, '', 90, 0, 0),
+('57c', 'Crochet lesté', 'crochet.jpg', 100, 20, 100, 4, '', 90, 0, 0),
+('59', 'Bague d''arrêt', 'bague.jpg', 100, 20, 99, 4, '', 90, 6, 0),
+('6a', 'Bande perforée (3 trous)', 'bndPerfore.jpg', 100, 20, 100, 3, '3 trous', 90, 0, 0),
+('8', 'Cornière', 'corniere.jpg', 100, 20, 100, 4, '25 trous', 90, 0, 0),
+('80c', 'Tige filetée', 'tigeFilete.jpg', 100, 20, 100, 4, '7.5 cm', 90, 0, 0),
+('90a', 'Bande incurvée, épaulée', 'bndCurve.jpg', 100, 20, 100, 3, '6 cm', 90, 0, 0),
+('99', 'Longrine', 'longrine.jpg', 100, 20, 100, 4, '32 cm', 90, 0, 0);
+
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `Categorie`
+--
+ALTER TABLE `Categorie`
+ ADD PRIMARY KEY (`ID_Catégorie`);
+
+--
+-- Index pour la table `Clients`
+--
+ALTER TABLE `Clients`
+ ADD PRIMARY KEY (`ID_Client`);
+
+--
+-- Index pour la table `Commande`
+--
+ALTER TABLE `Commande`
+ ADD PRIMARY KEY (`ID_Commande`);
+
+--
+-- Index pour la table `Commentaire`
+--
+ALTER TABLE `Commentaire`
+ ADD PRIMARY KEY (`ID_Commentaire`);
+
+--
+-- Index pour la table `Produit`
+--
+ALTER TABLE `Produit`
+ ADD PRIMARY KEY (`ID_Produit`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `Categorie`
+--
+ALTER TABLE `Categorie`
+MODIFY `ID_Catégorie` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT pour la table `Clients`
+--
+ALTER TABLE `Clients`
+MODIFY `ID_Client` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT pour la table `Commande`
+--
+ALTER TABLE `Commande`
+MODIFY `ID_Commande` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=249;
+--
+-- AUTO_INCREMENT pour la table `Commentaire`
+--
+ALTER TABLE `Commentaire`
+MODIFY `ID_Commentaire` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

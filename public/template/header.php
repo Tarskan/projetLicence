@@ -1,6 +1,6 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="titre" href="/projetphp/vue/index.php">P.M.U</a>
+    <a class="titre nav-link text-white" href="/projetphp/vue/index.php">P.M.U</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -21,9 +21,9 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <div class="pt-2 pb-2 bg-dark text-white">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-3" size="30" type="search" placeholder="Que cherchez vous ?" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="submit">Recherche</button>
+            <form action="../controllers/rechercheProduit.php" method="POST" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-3" id="searchBar" name="searchBar" size="30" type="search" placeholder="Que cherchez vous ?" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="recherche" id="recherche">Recherche</button>
             </form>
         </div>
         </li>

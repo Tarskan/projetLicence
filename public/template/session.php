@@ -4,13 +4,6 @@
 
 	require_once("../models/config.php");
 
-	try {
-		$bddConnexion = new mysqli(DBHOST, DBUSER, DBPASSWORD, DBNAME);
-	} catch (Exception $e) {
-		echo "Le service est actuellement indisponnible : BDD connexion error";
-		exit();
-	}
-
 	if(isset($_POST['connexion'])){
 		if(isset($_POST['mail']) && !empty(isset($_POST['mail'])) && 
 		isset($_POST['mdp']) && !empty(isset($_POST['mdp'])) ){
@@ -28,8 +21,6 @@
 			$userConnexion->execute();
 			$user = $userConnexion->get_result();
 			$userInfo = $user->fetch_assoc();
-
-			print_r($userInfo);
 			
 			if ($userInfo['email'] != null) {
 				$_SESSION['email'] = $userInfo['email'];
