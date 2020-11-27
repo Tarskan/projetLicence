@@ -5,6 +5,7 @@
 
 
     $article = [];
+    $articlePromo = [];
     $DBase = new Connect();
     $db = $DBase->connexion();
     $Art_man = new articleManager();
@@ -13,6 +14,7 @@
         header ("Location: cat_prod.php" );
     }
     $article = $Art_man->getInfo($_GET['id']);
+    $articlePromo = $Art_man->getPromotionArticle($_GET['id']);
 
 ?>
 
@@ -43,7 +45,14 @@
                     <div class="col-5">
                         <h5>Description :</h5>
                         <p> <?php echo $article[0]->getDescription() ?> </p>
-                        <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> ct</span>
+                        <?php if($article[0]->getPromotion() == NULL){ ?>
+                            <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> ct</span>
+                        <?php }
+                            else{
+                        ?>
+                            <span class="card-link">Prix : <del><?php echo $articlePromo[0]->getPrix() ?> ct</del>  <?php echo $articlePromo[0]->getPrixPromo() ?> ct</span>
+                            <span class="badge badge-success">- <?php echo $articlePromo[0]->getPourcentage() ?>%</span>
+                            <?php } ?>
                         <button class="card-link btn btn-success" name="acheter" id="acheter">Acheter</button>
                     </div>
                 </div>           
