@@ -1,0 +1,40 @@
+<?php
+require_once("../Manager/config.php");
+require_once("../Manager/ProduitManager.php");
+require_once("../Manager/UtilisateurManager.php");
+require_once("../Manager/ProduitManager.php");
+$DAOProduit = new ProduitManager(getDB());
+$DAOUtilisateur = new UtilisateurManager(getDB());
+ob_start();
+$pdf = new FPDF();
+$pdf->AddPage();
+$pdf->SetFont('Arial','B',16);
+$characts = 'abcdefghijklmnopqrstuvwxyz';
+$characts .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';        
+$characts .= '1234567890'; 
+$code_aleatoire = ''; 
+
+for($i=0;$i < 10;$i++) { 
+    $code_aleatoire .= substr($characts,rand()%(strlen($characts)),1); 
+}
+$pdf->Text(10,10,'Numero de facture : '.$code_aleatoire);
+
+foreach($_SESSION['idUti'] as $key => $value) {
+    $uti = $this->DAOUtilisateur->getList($value['idUti']);
+    $pdf->Text(10,20,'Nom : '.$uti[$key]['nom']);
+    $pdf->Text(10,30,'Prenom : '.$uti[$key]['prenom']);
+    $pdf->Text(10,40,'Email : '.$uti[$key]['email']);
+    $pdf->Text(10,50,'Adresse de livraison : '.$uti[$key]['adresse']);
+    $pdf->Text(10,60,'Telephone : '.$uti[$key]['telephone']);
+    //var_dump($uti[$key]['nom']);
+}
+foreach ($_SESSION['idUti'] as $key => $value) {
+    $listeUti = $this->DAOUtilisateur->getList($value['idUti']);
+    foreach ($listeUti as $uti) {
+        $pdf->Text(10,80,'Total de la commande : '.$_SESSION['montant'].' euros');
+    }
+}
+
+$pdf->Output('file.pdf', 'I');
+ob_end_flush();
+?>

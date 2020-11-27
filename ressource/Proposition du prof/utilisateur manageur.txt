@@ -1,0 +1,67 @@
+<?php
+include("Classes/Utilisateur.php"); // Avous de jouer
+class UtilisateurManager
+{
+    private $_db;
+
+    public function __construct($db) {
+        $this -> setDb($db);
+    }
+
+    public function add(Utilisateur $utilisateur)
+    {
+        $q = $this->_db->prepare('INSERT INTO utilisateurs(nom, prenom, mdp, email, adresse, telephone) VALUES(:nom, :prenom, :mdp, :email, :adresse, :telephone)');
+        $q->bindValue(':nom', $utilisateur->getNom(), PDO::PARAM_STR);
+        $q->bindValue(':prenom', $utilisateur->getPrenom(), PDO::PARAM_STR);
+        $q->bindValue(':mdp', $utilisateur->getMdp(), PDO::PARAM_STR);
+        $q->bindValue(':email', $utilisateur->getEmail(), PDO::PARAM_STR);
+        $q->bindValue(':adresse', $utilisateur->getAdresse(), PDO::PARAM_STR);
+        $q->bindValue(':telephone', $utilisateur->getTelephone(), PDO::PARAM_STR);
+        $q->execute();
+    }
+
+    public function delete(Utilisateur $uti) {
+        $this -> _db -> exec('DELETE FROM utilisateurs WHERE idUti= '.$uti -> getIdUti());
+    }
+
+    public function getList($idUti) {
+        $q = $this -> _db -> query("SELECT idUti, nom, prenom, mdp, email, adresse, telephone FROM utilisateurs WHERE idUti ='". $idUti."'");
+        $q->execute();
+        return $q->fetchAll();
+    }
+
+    public function get($id)
+    {
+        $id = (int) $id;
+        $q = $this->_db->query('SELECT * FROM utilisateurs WHERE idUti = ' . $id);
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        return new Utilisateur($donnees);
+    }
+
+    public function getIdUtiByEmailAndPwd($email) {
+        $q = $this -> _db -> prepare("SELECT idUti FROM utilisateurs WHERE email ='". $email."'");
+        $q->execute();
+        return $q->fetchAll();
+    }
+
+    public function getUtiById($idUti) {
+        $q = $this -> _db -> prepare("SELECT idUti FROM utilisateurs WHERE idUti ='". $idUti."'");
+        $q->execute();
+        return $q->fetchAll();
+    }
+
+    public function update(Utilisateur $utilisateur) {
+        $q = $this -> _db -> prepare('UPDATE utilisateurs SET mdp = :mdp, email = :email, adresse = :adresse, telephone = :telephone 
+        WHERE idUti = :idUti');
+        $q->bindValue(':mdp', $utilisateur->getMdp(), PDO::PARAM_STR);
+        $q->bindValue(':email', $utilisateur->getEmail(), PDO::PARAM_STR);
+        $q->bindValue(':adresse', $utilisateur->getAdresse(), PDO::PARAM_STR);
+        $q->bindValue(':telephone', $utilisateur->getTelephone(), PDO::PARAM_STR);
+        $q->bindValue(':idUti', $utilisateur->getIdUti(), PDO::PARAM_INT);
+        $q->execute();
+    }
+
+    public function setDb(PDO $db) {
+        $this -> _db = $db;
+    }
+}

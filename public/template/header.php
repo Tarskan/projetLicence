@@ -11,7 +11,7 @@
           <a class="nav-link" href="/projetphp/vue/index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cat_prod.php">Produit</a>
+          <a class="nav-link" href="cat_prod.php?categorie=1">Produit</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/projetphp/vue/lesConseils.php">Conseils</a>
@@ -30,12 +30,12 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link">Panier <span><i class="fas fa-cart-arrow-down"></i> 0</span></a>
+          <a class="nav-link" data-toggle="modal" data-target="#panierAchat">Panier <i class="fas fa-cart-arrow-down"></i><span id="totalCaddie"> <?php echo $panier->nbArticles()?></span></a>
         </li>
         <li class="nav-item">
         <?php
         if(isset($_SESSION['email'])){
-          echo('<a class="nav-link">');
+          echo('<a class="nav-link" href="../vue/menuUtilisateur.php">');
           echo $_SESSION['email'];
           echo('</a>');
           
@@ -59,6 +59,9 @@
       } else {
          include_once('../public/template/connexion.php');
       }
+      ?>
+      <?php
+         include_once('../public/template/panierAchat.php');
       ?>
     </div>
   </nav>

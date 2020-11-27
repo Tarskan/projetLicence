@@ -1,4 +1,14 @@
-<?php include_once('../public/template/session.php'); ?>
+<?php 
+include_once('../public/template/session.php'); 
+include_once('../models/panier.php');
+include_once('../models/ArticleManager.php');
+
+$article = [];
+$Art_man = new articleManager();
+$panier = new Panier();
+
+?>
+
 
 <html lang="fr">
     <head>

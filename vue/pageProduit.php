@@ -2,20 +2,21 @@
     include_once('../public/template/session.php');
     include_once('../models/ConnexionBdd.php');
     include_once('../models/ArticleManager.php');
+    include_once('../models/panier.php');
 
-
-    $article = [];
-    $articlePromo = [];
+    $panier = new Panier();
     $DBase = new Connect();
     $db = $DBase->connexion();
+    $article = [];
+    $articleDisplay = [];
     $Art_man = new articleManager();
 
     if(!isset($_GET['id'])){
         header ("Location: cat_prod.php" );
     }
     $article = $Art_man->getInfo($_GET['id']);
-    $articlePromo = $Art_man->getPromotionArticle($_GET['id']);
 
+    // var_dump($_SESSION);
 ?>
 
 <?php include_once('../public/template/session.php'); ?>
@@ -32,7 +33,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-2">
-                        <button class="btn btn-success">Retour</button>
+                        <a href="javascript:history.back()" class="btn btn-success">Retour</a>
                     </div>
                     <div class="col-8 text-center">
                         <h3><?php echo $article[0]->getLibelle() ?></h3>
@@ -45,15 +46,8 @@
                     <div class="col-5">
                         <h5>Description :</h5>
                         <p> <?php echo $article[0]->getDescription() ?> </p>
-                        <?php if($article[0]->getPromotion() == NULL){ ?>
-                            <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> ct</span>
-                        <?php }
-                            else{
-                        ?>
-                            <span class="card-link">Prix : <del><?php echo $articlePromo[0]->getPrix() ?> ct</del>  <?php echo $articlePromo[0]->getPrixPromo() ?> ct</span>
-                            <span class="badge badge-success">- <?php echo $articlePromo[0]->getPourcentage() ?>%</span>
-                            <?php } ?>
-                        <button class="card-link btn btn-success" name="acheter" id="acheter">Acheter</button>
+                        <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> €</span>
+                        <a class="card-link btn btn-success ajouterPanier" href="/projetphp/controllers/ajouteAuPanier.php?id=<?php echo  $article[0]->getId()?>" name="acheter" id="acheter">Acheter</a>
                     </div>
                 </div>           
             </div>

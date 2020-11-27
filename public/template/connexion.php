@@ -33,7 +33,7 @@
                         } 
                         ?>
                         <p class="text-center"><a href="#" class="btn">Vous avez perdu votre mot de passe ?</a></p>
-                        <p class="text-center"><a href="#" class="btn">Inscription</a></p>
+                        <p class="text-center"><a href="../vue/vueInscription.php" class="btn">Inscription</a></p>
                     </form>
                 </article>
             </div>

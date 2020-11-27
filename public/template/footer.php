@@ -15,9 +15,9 @@
 	</div>	
 </footer>
 
-<script src="../public/js/jquery.js"></script>
+<script src="../js/jquery.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="../public/js/bootstrap.js"></script>
+<script src="../js/bootstrap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
 <script>
@@ -38,5 +38,28 @@
 			});
 		});
 	});
-
   </script>
+<!-- <script type="text/javascript" src='../js/ajoutpanier.js'></script> -->
+<script>
+    (function($){
+
+		$('.ajouterPanier').click(function(event){
+			event.preventDefault();
+			$.get($(this).attr('href'),{},function(data){
+				if(data.error){
+					alert(data.message)
+				}
+				$('#totalCaddie').empty().append(data.quantite);
+				$('#totalCaddie2').empty().append(data.quantite);
+				$('#totalPrixAchat').empty().append(data.total);
+				$('#affichagePanier').empty();
+				for (let i = 0; i < data.donneProd.length; i++) {
+					$('#affichagePanier').append(data.donneProd[i]);
+				}
+			},'json');
+			document.getElementById('AVIDER').innerHTML = "";
+			return false;
+		});
+		
+	})(jQuery);
+</script>

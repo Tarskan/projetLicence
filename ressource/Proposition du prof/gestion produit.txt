@@ -1,0 +1,70 @@
+<?php
+include("Classes/Produit.php"); // A vous de jouer !!!
+class ProduitManager
+{
+    private $_db;
+
+    public function __construct($db) {
+        $this -> setDb($db);
+    }
+
+    public function getList() {
+        $produit = [];
+        $q = $this->_db->query('SELECT idProd, libelle, img, prixHT, prixTotal, tva, stock, descript, idCat FROM produit');
+        $liste = array();
+        while($donnees = $q->fetch()) {
+            $produit = new Produit($donnees['idProd'], $donnees['libelle'], $donnees['img'], $donnees['prixHT'], $donnees['prixTotal'], $donnees['tva'], $donnees['stock'], $donnees['descript'], $donnees['idCat']);
+            $liste[] = $produit;
+        }
+        return $liste;
+    }
+
+    public function getRech($rech) {
+        $produit = [];
+        $q = $this->_db->query("SELECT idProd, libelle, img, prixHT, prixTotal, tva, stock, descript, idCat FROM produit WHERE libelle LIKE '{$rech}%'");
+        $liste = array();
+        while($donnees = $q->fetch()) {
+            $produit = new Produit($donnees['idProd'], $donnees['libelle'], $donnees['img'], $donnees['prixHT'], $donnees['prixTotal'], $donnees['tva'], $donnees['stock'], $donnees['descript'], $donnees['idCat']);
+            $liste[] = $produit;
+        }
+        return $liste;
+    }
+
+    public function getProduitById($idProd) {
+        $produit = [];
+        $q = $this->_db->query("SELECT idProd, libelle, img, prixHT, prixTotal, tva, stock, descript, idCat FROM produit WHERE idProd=".$idProd);
+        $liste = array();
+        while($donnees = $q->fetch()) {
+            $produit = new Produit($donnees['idProd'], $donnees['libelle'], $donnees['img'], $donnees['prixHT'], $donnees['prixTotal'], $donnees['tva'], $donnees['stock'], $donnees['descript'], $donnees['idCat']);
+            $liste[] = $produit;
+        }
+        return $liste;
+    }
+
+    public function getProduitByIdCat($idCat) {
+        $produit = [];
+        $q = $this->_db->query("SELECT idProd, libelle, img, prixHT, prixTotal, tva, stock, descript, idCat FROM produit WHERE idCat=".$idCat);
+        $liste = array();
+        while($donnees = $q->fetch()) {
+            $produit = new Produit($donnees['idProd'], $donnees['libelle'], $donnees['img'], $donnees['prixHT'], $donnees['prixTotal'], $donnees['tva'], $donnees['stock'], $donnees['descript'], $donnees['idCat']);
+            $liste[] = $produit;
+        }
+        return $liste;
+    }
+
+    public function getProduitByCommande() {
+        $produit = [];
+        $q = $this->_db->query("SELECT * FROM commande LEFT JOIN produit ON commande.idProd = produit.idProd");
+        $liste = array();
+        while($donnees = $q->fetch()) {
+            $produit = new Produit($donnees['idProd'], $donnees['libelle'], $donnees['img'], $donnees['prixHT'], $donnees['prixTotal'], $donnees['tva'], $donnees['stock'], $donnees['descript'], $donnees['idCat']);
+            $liste[] = $produit;
+        }
+        return $liste;
+    }
+
+
+    public function setDb(PDO $db) {
+        $this -> _db = $db;
+    }
+}
