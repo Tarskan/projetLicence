@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 27 nov. 2020 à 14:26
+-- Généré le : ven. 27 nov. 2020 à 16:24
 -- Version du serveur :  8.0.21
 -- Version de PHP : 7.2.33
 
