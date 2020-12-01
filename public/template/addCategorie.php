@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <form action="../controllers/Ajouter.php" method="post">
+                <form action="../controllers/adminAjouter.php" method="post">
                     <div class="modal-body">
 
                             <div class="form-group">

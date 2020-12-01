@@ -11,7 +11,7 @@
           <a class="nav-link" href="/projetphp/vue/index.php">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="cat_prod.php?categorie=1">Produit</a>
+          <a class="nav-link" href="cat_prod.php">Produit</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/projetphp/vue/lesConseils.php">Conseils</a>

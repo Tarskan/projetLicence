@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <form action="../controllers/Ajouter.php" method="post" enctype="multipart/form-data">
+                <form action="../controllers/adminAjouter.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <h3 id="PAproduit"></h3>
                         <input type="hidden" name="PAid_produit" id="PAid_produit" value="">

@@ -65,6 +65,14 @@
                         <div class="text-center">
                             <button onclick=window.location.href='../vue/modifierProfil.php' type="button" class="btn btn-warning mt-4">Modifier les informations</button>
                             <button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-danger mt-4 ml-5">Supprimer son compte</button>
+                            <?php
+                                if($_SESSION['libellé'] == "Administrateur"){
+                            ?>
+
+                                <button onclick=window.location.href='../vue/dashboard.php' type="button" class="btn btn btn-info mt-4">Panel Administrateur</button>
+                            <?php
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,7 @@
 
     $categories = [];
     $article = [];
+    $articlePromo = [];
     $DBase = new Connect();
     $db = $DBase->connexion();
     $Cat_man = new CategorieManager();
@@ -18,13 +19,16 @@
 
     if(isset($_GET['categorie'])){
         $article = $Art_man->getList($_GET['categorie']);
+        $articlePromo=$Art_man->getPromotionCategorie($_GET['categorie']);
     }
     else{
         $article = $Art_man->getList('%');
+        $articlePromo=$Art_man->getPromotionCategorie('%');
     }
     $categories = $Cat_man->listeCategorie();
     $tailleCategories = sizeof($categories);
     $tailleArticle = sizeof($article);
+    $tailleArticlePromo = sizeof($articlePromo);
 
     // var_dump($_SESSION);
 ?>
@@ -63,6 +67,7 @@
                             <div class="col">
                                 <div class="row">
 <?php
+    $y = 0;
     for ($i=0; $i < $tailleArticle; $i++) { 
 ?>
     
@@ -73,7 +78,26 @@
                                                 <div class="row">
                                                     <div class="col">
                                                         <h5 class="card-title"><?php echo $article[$i]->getLibelle() ?></h5>
-                                                        <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> €</span>
+                                                        <?php 
+                                                        if($article[$i]->getPromotion() != NULL){
+                                                        if($article[$i]->getId() == $articlePromo[$y]->getId()){ 
+                                                        ?>
+                                                            <span class="card-link">Prix : <del><?php echo $articlePromo[$y]->getPrix() ?> ct</del>  <?php echo $articlePromo[$y]->getPrixPromo() ?> ct</span>
+                                                            <span class="badge badge-success">- <?php echo $articlePromo[$y]->getPourcentage() ?>%</span>
+                                                        <?php 
+                                                            $y++;
+                                                            }
+                                                            else{
+                                                        ?>
+                                                            <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> ct</span>
+                                                        <?php
+                                                            }}
+                                                            else{
+                                                        ?>
+                                                            <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> ct</span>
+                                                        <?php
+                                                            }
+                                                        ?>
                                                         <a href="pageProduit.php?id=<?php echo  $article[$i]->getId()?>"><button class="card-link btn btn-success" name="info" id="info">Information</button></a>
                                                         <a class="card-link btn btn-success ajouterPanier" href="/projetphp/controllers/ajouteAuPanier.php?id=<?php echo  $article[$i]->getId()?>" name="acheter" id="acheter">Acheter</a>
                                                     </div>

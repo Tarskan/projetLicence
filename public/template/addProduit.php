@@ -14,7 +14,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <form action="../controllers/Ajouter.php" method="post" enctype="multipart/form-data">
+                <form action="../controllers/adminAjouter.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-md-4">

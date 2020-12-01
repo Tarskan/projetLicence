@@ -16,7 +16,7 @@ $Cli_man = new clientManager();
 if(isset($_POST['PAid_produit']) && isset($_POST['PApourcentage']) && isset($_POST['PAdate']))
     {
         $Art_man->addPromotion($_POST['PAid_produit'],$_POST['PApourcentage'],$_POST['PAdate']);
-        header('location../vue/dashboard.php');
+        header('location:../vue/dashboard.php');
     }
 
 if(isset($_POST['CO-Atitre']) && isset($_POST['CO-Alibelle']) && isset($_POST['CO-Avideo']) ){

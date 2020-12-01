@@ -21,6 +21,30 @@ class CategorieManager
 
     return $categories;
   }
+
+  public function deleteCategorie($id)
+  {
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $q = $db->prepare('DELETE FROM categorie_produit WHERE id_cat_prod = "'.$id.'"');
+    $q->execute();
+  }
+
+  public function addCategorie($libelle)
+  {
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $q = $db->prepare('INSERT INTO categorie_produit (libelle) VALUES ("'.$libelle.'");');
+    $q->execute();
+  }
+
+  public function modifCategorie($id,$libelle)
+  {
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $q = $db->prepare('UPDATE categorie_produit SET libelle = "'.$libelle.'" WHERE id_cat_prod = "'.$id.'"');
+    $q->execute();
+  }
   
 }
 

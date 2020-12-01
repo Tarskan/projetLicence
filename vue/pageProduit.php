@@ -9,12 +9,14 @@
     $db = $DBase->connexion();
     $article = [];
     $articleDisplay = [];
+    $articlePromo = [];
     $Art_man = new articleManager();
 
     if(!isset($_GET['id'])){
         header ("Location: cat_prod.php" );
     }
     $article = $Art_man->getInfo($_GET['id']);
+    $articlePromo = $Art_man->getPromotionArticle($_GET['id']);
 
     // var_dump($_SESSION);
 ?>
@@ -46,7 +48,14 @@
                     <div class="col-5">
                         <h5>Description :</h5>
                         <p> <?php echo $article[0]->getDescription() ?> </p>
-                        <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> €</span>
+                        <?php if($article[0]->getPromotion() == NULL){ ?>
+                            <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> ct</span>
+                        <?php }
+                            else{
+                        ?>
+                            <span class="card-link">Prix : <del><?php echo $articlePromo[0]->getPrix() ?> ct</del>  <?php echo $articlePromo[0]->getPrixPromo() ?> ct</span>
+                            <span class="badge badge-success">- <?php echo $articlePromo[0]->getPourcentage() ?>%</span>
+                            <?php } ?>
                         <a class="card-link btn btn-success ajouterPanier" href="/projetphp/controllers/ajouteAuPanier.php?id=<?php echo  $article[0]->getId()?>" name="acheter" id="acheter">Acheter</a>
                     </div>
                 </div>           

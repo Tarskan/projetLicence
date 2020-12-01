@@ -16,7 +16,8 @@
 				$loginErr = "Le service est actuellement indisponnible : BDD connexion error";
 			}
 		
-			$userConnexion = $bddConnexion->prepare("SELECT id, email, Nom, Prenom, Raison, adresse, codepostal, ville, tel, MDP FROM utilisateur WHERE email = ? AND MDP = ?");
+			$userConnexion = $bddConnexion->prepare("SELECT id, email, Nom, Prenom, Raison, adresse, codepostal, ville, tel, MDP,categorie_utilisateur.libellé FROM utilisateur 
+			JOIN categorie_utilisateur ON utilisateur.id_cat = categorie_utilisateur.id_cat WHERE email = ? AND MDP = ?");
 			$userConnexion->bind_param("ss", $mail, $mdp);
 			$userConnexion->execute();
 			$user = $userConnexion->get_result();
@@ -33,6 +34,7 @@
 				$_SESSION['ville'] = $userInfo['ville'];
 				$_SESSION['tel'] = $userInfo['tel'];
 				$_SESSION['mdp'] = $userInfo['MDP'];
+				$_SESSION['libellé'] = $userInfo['libellé'];
 			}
 			else {
 				$loginErr = "Identifiant ou mot de passe incorrect";

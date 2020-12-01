@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-                <form action="../controllers/Modifier.php" method="post" enctype="multipart/form-data">
+                <form action="../controllers/adminModifier.php" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <input type="hidden" name="CO-Mid" id="id" value="">
                         <div class="form-group">

@@ -1,7 +1,49 @@
 <?php
 
+include_once('Client.php');
+include_once('Ucategorie.php');
+
 class clientManager
 {
+
+  public function listClient()
+  {
+    $clients = [];
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $q = $db->prepare('SELECT id,Nom,Prenom,email,adresse,codepostal,ville,tel,categorie_utilisateur.libellé, categorie_utilisateur.id_cat FROM utilisateur
+    JOIN categorie_utilisateur ON utilisateur.id_cat = categorie_utilisateur.id_cat ');
+    $q->execute();
+    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    {
+      $clients[] = new Client($donnees);
+    }
+    
+    return $clients;
+  }
+
+  public function listeUCategorie()
+  {
+    $Ucategories = [];
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $q = $db->prepare('SELECT id_cat,libellé FROM categorie_utilisateur');
+    $q->execute();
+    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    {
+      $Ucategories[] = new Ucategorie($donnees);
+    }
+    
+    return $Ucategories;
+  }
+
+  public function upUtilisateur($id,$id_cat)
+  {
+    $DBase = new Connect();
+    $db = $DBase->connexion();
+    $q = $db->prepare('UPDATE utilisateur SET id_cat="'.$id_cat.'" WHERE id = "'.$id.'"');
+    $q->execute();
+  }
   
   //recupere les informations sur la connexion pour la verifier
   public function connexion(Client $client)

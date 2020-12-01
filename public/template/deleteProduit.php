@@ -12,7 +12,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-            <form action='../controllers/Supprimer.php' method="post">
+            <form action='../controllers/adminSupprimer.php' method="post">
                 <input type="hidden" name="id_produit" value="">
                 <button type="submit" class="btn btn-primary">Oui </button>
             </form>
