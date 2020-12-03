@@ -36,14 +36,14 @@
                     <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <a>Catégorie :</a>
-                                <ul>
+                                <div class="list-group">
                                     <?php 
                                         for ($i=0; $i < $tailleCategories; $i++) { 
-                                            echo '<li> <a href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a></li> ';
+                                            echo '<a class="list-group-item list-group-item-action" href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a> ';
                                         }
 
                                      ?>
-                                </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
@@ -51,8 +51,10 @@
                                 <a>Conseil</a>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
-                                        <iframe width="320" height="185" src="https://www.youtube.com/embed/grFK-PqOKp8" frameborder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/grFK-PqOKp8" frameborder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
@@ -77,7 +79,7 @@
                                                         <div class="row">
                                                             <div class="col">
                                                                 <h5 class="card-title"><?php echo $articlePromo[$i]->getLibelle() ?></h5>
-                                                                <span class="card-link">Prix : <del><?php echo $articlePromo[$i]->getPrix() ?> ct</del>  <?php echo $articlePromo[$i]->getPrixPromo() ?> ct</span>
+                                                                <span class="card-link">Prix : <del><?php echo $articlePromo[$i]->getPrix() ?> €</del>  <?php echo $articlePromo[$i]->getPrixPromo() ?> €</span>
                                                                 <span class="badge badge-success">- <?php echo $articlePromo[$i]->getPourcentage() ?>%</span>
                                                             <a href="pageProduit.php?id=<?php echo  $articlePromo[$i]->getId()?>"><button class="card-link btn btn-success" name="info" id="info">Information</button></a>
                                                             <a class="card-link btn btn-success ajouterPanier" href="/projetphp/controllers/ajouteAuPanier.php?id=<?php echo  $articlePromo[$i]->getId()?>" name="acheter" id="acheter">Acheter</a>
@@ -99,12 +101,11 @@
                         <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <a>Meilleur vente :</a>
-                                <ul>
+                                <ul class="list-group">
                                 <?php 
                                     for ($i=0; $i < $tailleVente; $i++) { 
-                                        echo '<li> '. $ventes[$i]->getLibelle() . '</li> ';
+                                        echo '<li class="list-group-item"> '. $ventes[$i]->getLibelle() . '</li> ';
                                     }
-
                                 ?>
                                 </ul>
                             </div>

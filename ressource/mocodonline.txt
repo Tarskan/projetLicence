@@ -1,0 +1,22 @@
+promotion: id, pourcentage, datedebut, datefin
+Cherche, 1N produit, 1N commande
+commande: id_commande, quantité, date, id_utilisateur, id_produit
+Prend, 1N utilisateur, 1N commande
+utilisateur: id, Nom, Prenom, email, MDP, Raison, adresse, codePostal, ville, tel, id_cat
+
+Associer, 1N produit, 11 promotion
+produit: id_produit, reference, quantité, prix_unitaire, libelle, description, id_cat, promotion
+Complete, 1N produit, 1N objet
+:
+Correspond, 1N utilisateur,  11 categorie_utilisateur
+
+categorie_produit: id_cat_prod,libelle
+Affilier, 1N produit, 11 categorie_produit
+objet: chemin, image, id_prod
+Retrouver, 1N comptesupprimer,  11 categorie_utilisateur
+categorie_utilisateur : id_cat, libellé
+
+De, 1N categorie_produit, 1N conseils
+conseils: id_cons, titre, libelle, video, id_cat_prod
+:
+comptesupprimer: id_compteSupp, Nom, Prenom, email, MDP, Raison, adresse, codePostal, ville, tel, id_cat

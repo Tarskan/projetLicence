@@ -8,9 +8,12 @@
                         <thead>
                             <tr>
                             <th scope="col"></th>
-                            <th scope="col">Nom du produit</th>
+                            <th scope="col">Produit</th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Prix</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody id="affichagePanier">
@@ -23,10 +26,16 @@
                                         for ($i = 0; $i < count($_SESSION['panier']['id_prod']); $i ++) {
                                             $articleDisplay[$i] = $Art_man->getInfo($_SESSION['panier']['id_prod'][$i]);
                                             echo "<tr>";
-                                            echo "<th scope='row'>" . $i . "</th>";
+                                            echo "<th scope='row'></th>";
                                             echo "<td>" . $articleDisplay[$i][0]->getLibelle() . "</td>";
                                             echo "<td>" . $_SESSION['panier']['quantite'][$i] . "</td>";
                                             echo "<td>" . $_SESSION['panier']['quantite'][$i]*$_SESSION['panier']['prix'][$i] . " €</td>";
+                                            echo "<td><a class='card-link btn btn-danger modifPanier' href='/projetphp/controllers/modifAchatPanier.php?id= " . $_SESSION['panier']['id_prod'][$i]
+                                            . "&qt=" . $_SESSION['panier']['quantite'][$i] . "' name='modifPanier' id='modifPanier'>-</a></td>";
+                                            echo "<td><a class='card-link btn btn-success ajouterPanier' href='/projetphp/controllers/ajouteAuPanier.php?id= " . 
+                                            $_SESSION['panier']['id_prod'][$i] . "' name='acheterPanier' id='acheterPanier'>+</a></td>";
+                                            echo "<td><a class='card-link btn btn-warning suppPanier' href='/projetphp/controllers/suppProduitAchat.php?id= " . 
+                                            $_SESSION['panier']['id_prod'][$i] . "' name='suppPanier' id='suppPanier'>Enlever</a></td>";
                                             echo "</tr>";
                                         }
                                     }

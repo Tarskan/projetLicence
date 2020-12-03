@@ -30,7 +30,6 @@
 				data: {query: query},
 				dataType : 'JSON',
 				success: function(data) {
-					console.log(data);
 					$( "#searchBar" ).autocomplete({
 						source: data
 					});
@@ -61,5 +60,49 @@
 			return false;
 		});
 		
+	})(jQuery);
+</script>
+
+<script>
+    (function($){
+		$('.modifPanier').click(function(event){
+			event.preventDefault();
+			$.get($(this).attr('href'),{},function(data){
+				if(data.error){
+					alert(data.message)
+				}
+				$('#totalCaddie').empty().append(data.quantite);
+				$('#totalCaddie2').empty().append(data.quantite);
+				$('#totalPrixAchat').empty().append(data.total);
+				$('#affichagePanier').empty();
+				for (let i = 0; i < data.donneProd.length; i++) {
+					$('#affichagePanier').append(data.donneProd[i]);
+				}
+			},'json');
+			document.getElementById('AVIDER').innerHTML = "";
+			return false;
+		});
+	})(jQuery);
+</script>
+
+<script>
+    (function($){
+		$('.suppPanier').click(function(event){
+			event.preventDefault();
+			$.get($(this).attr('href'),{},function(data){
+				if(data.error){
+					alert(data.message)
+				}
+				$('#totalCaddie').empty().append(data.quantite);
+				$('#totalCaddie2').empty().append(data.quantite);
+				$('#totalPrixAchat').empty().append(data.total);
+				$('#affichagePanier').empty();
+				for (let i = 0; i < data.donneProd.length; i++) {
+					$('#affichagePanier').append(data.donneProd[i]);
+				}
+			},'json');
+			document.getElementById('AVIDER').innerHTML = "";
+			return false;
+		});
 	})(jQuery);
 </script>

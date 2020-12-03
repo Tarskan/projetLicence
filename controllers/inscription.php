@@ -51,27 +51,10 @@
             
         $DBase = new Connect();
         $db = $DBase->connexion();
-        $q = $db->prepare("INSERT INTO utilisateur (`Nom`, `Prenom`, `email`, `MDP`, `Raison`, `adresse`, `codePostal`, `ville`, `tel`, `id_cat`) VALUES (" . $nom . ", '" . $prenom . "', '" . $email . "', '" . $mdp . "', '" . $raisonSocial ."', '" . $adresse . "', " . $codePostal . ", '" . $ville . "', " . $ntel . ", 1");
+        $q = $db->prepare("INSERT INTO utilisateur SET `Nom`= '" . $nom . "', `Prenom`= '" . $prenom . "', `email`= '" . $email . "', `MDP`= '" . $mdp . "', `Raison`= '" . $raisonSocial . "
+        ',  `adresse` = '" . $adresse . "', `ville` = '" . $ville . "', `codepostal` = " . $codePostal .", `tel`= " . $ntel . ", id_cat = 2");
         $q->execute();
 
-        $DBase2 = new Connect();
-        $recup = $DBase2->connexion();
-        $userConnexion = $recup->prepare("SELECT id, email, Nom, Prenom, Raison, adresse, codepostal, ville, tel, MDP FROM utilisateur WHERE email = '" . $email ."'");
-		$userConnexion->execute();
-		$user = $userConnexion->fetch(PDO::FETCH_ASSOC);
-			
-		if ($user['email'] != null) {
-			$_SESSION['id'] = $user['id'];
-			$_SESSION['email'] = $user['email'];
-			$_SESSION['nom'] = $user['Nom'];
-			$_SESSION['prenom'] = $user['Prenom'];
-			$_SESSION['raison'] = $user['Raison'];
-			$_SESSION['adresse'] = $user['adresse'];
-			$_SESSION['codePostal'] = $user['codepostal'];
-			$_SESSION['ville'] = $user['ville'];
-            $_SESSION['tel'] = $user['tel'];
-            $_SESSION['mdp'] = $user['MDP'];
-        }
         header("location:/projetphp/vue/menuUtilisateur.php");
     }
 

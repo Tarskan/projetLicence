@@ -49,14 +49,14 @@
                         <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <a>Catégorie :</a>
-                                <ul>
+                                <div class="list-group">
                                     <?php 
                                         for ($i=0; $i < $tailleCategories; $i++) { 
-                                            echo '<li> <a href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a></li> ';
+                                            echo '<a class="list-group-item list-group-item-action" href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a> ';
                                         }
 
                                      ?>
-                                </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,19 +82,19 @@
                                                         if($article[$i]->getPromotion() != NULL){
                                                         if($article[$i]->getId() == $articlePromo[$y]->getId()){ 
                                                         ?>
-                                                            <span class="card-link">Prix : <del><?php echo $articlePromo[$y]->getPrix() ?> ct</del>  <?php echo $articlePromo[$y]->getPrixPromo() ?> ct</span>
+                                                            <span class="card-link">Prix : <del><?php echo $articlePromo[$y]->getPrix() ?> €</del>  <?php echo $articlePromo[$y]->getPrixPromo() ?> €</span>
                                                             <span class="badge badge-success">- <?php echo $articlePromo[$y]->getPourcentage() ?>%</span>
                                                         <?php 
                                                             $y++;
                                                             }
                                                             else{
                                                         ?>
-                                                            <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> ct</span>
+                                                            <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> €</span>
                                                         <?php
                                                             }}
                                                             else{
                                                         ?>
-                                                            <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> ct</span>
+                                                            <span class="card-link">Prix : <?php echo $article[$i]->getPrix() ?> €</span>
                                                         <?php
                                                             }
                                                         ?>

@@ -49,11 +49,11 @@
                         <h5>Description :</h5>
                         <p> <?php echo $article[0]->getDescription() ?> </p>
                         <?php if($article[0]->getPromotion() == NULL){ ?>
-                            <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> ct</span>
+                            <span class="card-link">Prix : <?php echo $article[0]->getPrix() ?> €</span>
                         <?php }
                             else{
                         ?>
-                            <span class="card-link">Prix : <del><?php echo $articlePromo[0]->getPrix() ?> ct</del>  <?php echo $articlePromo[0]->getPrixPromo() ?> ct</span>
+                            <span class="card-link">Prix : <del><?php echo $articlePromo[0]->getPrix() ?> €</del>  <?php echo $articlePromo[0]->getPrixPromo() ?> €</span>
                             <span class="badge badge-success">- <?php echo $articlePromo[0]->getPourcentage() ?>%</span>
                             <?php } ?>
                         <a class="card-link btn btn-success ajouterPanier" href="/projetphp/controllers/ajouteAuPanier.php?id=<?php echo  $article[0]->getId()?>" name="acheter" id="acheter">Acheter</a>

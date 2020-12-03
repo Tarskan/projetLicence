@@ -51,7 +51,8 @@
             
         $DBase = new Connect();
         $db = $DBase->connexion();
-        $q = $db->prepare("UPDATE utilisateur SET `Nom`= '" . $nom . "', `Prenom`= '" . $prenom . "', `email`= '" . $email . "', `MDP`= '" . $mdp . "', `Raison`= '" . $raisonSocial . "',  `adresse` = '" . $adresse . "', `ville` = '" . $ville . "', `codepostal` = " . $codePostal .", `tel`= " . $ntel . "  WHERE id = " . $_SESSION['id']);
+        $q = $db->prepare("UPDATE utilisateur SET `Nom`= '" . $nom . "', `Prenom`= '" . $prenom . "', `email`= '" . $email . "', `MDP`= '" . $mdp . "', `Raison`= '" . 
+        $raisonSocial . "',  `adresse` = '" . $adresse . "', `ville` = '" . $ville . "', `codepostal` = " . $codePostal .", `tel`= " . $ntel . "  WHERE id = " . $_SESSION['id']);
         $q->execute();
 
         $DBase2 = new Connect();

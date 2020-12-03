@@ -12,7 +12,8 @@
 
     $article = $Art_man->getInfo($_GET['id']);
 
-    $panier->ajouterArticle($article[0]->getId(), 1, $article[0]->getPrix());
+    $quantiteModifier = $_GET['qt']-1;
+    $panier->modifierQTeArticle($article[0]->getId(), $quantiteModifier);
 
     $json['error'] = false;
     $json['message'] = 'ça marche';
@@ -32,8 +33,8 @@
             <td>" . $articleDisplay[$i][0]->getLibelle() . "</td>
             <td>" . $_SESSION['panier']['quantite'][$i] . "</td>
             <td>" . $_SESSION['panier']['quantite'][$i]*$_SESSION['panier']['prix'][$i] . " €</td>
-            <td><a class='card-link btn btn-danger supprimerPanier' href='/projetphp/controllers/suppAchatPanier.php?id= " . $_SESSION['panier']['id_prod'][$i]
-            . "' name='suppPanier' id='suppPanier'>-</a></td>
+            <td><a class='card-link btn btn-danger supprimerPanier' href='/projetphp/controllers/modifAchatPanier.php?id= " . $_SESSION['panier']['id_prod'][$i]
+            . "&qt=" . $_SESSION['panier']['quantite'][$i] . "' name='suppPanier' id='suppPanier'>-</a></td>
             <td><a class='card-link btn btn-success ajouterPanier' href='/projetphp/controllers/ajouteAuPanier.php?id= " . 
             $_SESSION['panier']['id_prod'][$i] . "' name='acheterPanier' id='acheterPanier'>+</a></td>
             <td><a class='card-link btn btn-warning suppPanier' href='/projetphp/controllers/suppProduitAchat.php?id= " . 
