@@ -43,5 +43,13 @@ class CommandeManager
 
     return $commandes;
   }
+
+  public function addCommande($id_produit,$quantite,$date,$id_utilisateur)
+  {
+    $DBase = new Connect();
+		$db = $DBase->connexion();
+    $q = $db->prepare('INSERT INTO commande (quantité, date, id_utilisateur, id_produit) VALUES ("'.$quantite.'",CURDATE(),"'.$id_utilisateur.'","'.$id_produit.'")');
+    $q->execute();
+  }
 }
 ?>

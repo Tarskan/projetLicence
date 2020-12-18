@@ -93,7 +93,8 @@ class articleManager
 
     $DBase = new Connect();
 		$db = $DBase->connexion();
-    $q = $db->prepare('SELECT id_produit,libelle,chemin,image,description,prix_unitaire,quantité,ROUND(prix_unitaire*(pourcentage/100),2)as prix,promotion,pourcentage,datefin from produit
+    $q = $db->prepare('SELECT id_produit,libelle,chemin,image,description,prix_unitaire,quantité,ROUND(prix_unitaire*(pourcentage/100),2)as prix,promotion,pourcentage,datefin 
+    from produit
     join objet on objet.id_prod = id_produit
     join promotion on promotion.id = produit.promotion where CURDATE() between datedebut and datefin and id_produit = "'.$article.'"');
     $q->execute();
@@ -188,8 +189,9 @@ class articleManager
     $articles = [];
     $DBase = new Connect();
     $db = $DBase->connexion();
-    $q = $db->prepare('SELECT id_produit,produit.libelle,description,prix_unitaire,chemin,image,promotion from objet join (produit 
-    join categorie_produit on categorie_produit.id_cat_prod = id_cat) on produit.id_produit = id_prod  where id_cat LIKE "'.$categorie.'" ');
+    $q = $db->prepare('SELECT id_produit,reference,produit.libelle,quantité,description,prix_unitaire,chemin,image,promotion,(categorie_produit.libelle) as categorie ,id_cat
+    from objet 
+    join (produit join categorie_produit on categorie_produit.id_cat_prod = id_cat) on produit.id_produit = id_prod  where id_cat LIKE "'.$categorie.'" ');
     $q->execute();
     while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
     {
@@ -213,12 +215,12 @@ class articleManager
     $r->execute();
   }
 
-  public function modifProduit($id,$reference,$libelle,$prix,$description,$quantite)
+  public function modifProduit($id,$reference,$libelle,$prix,$description,$quantite,$idCat)
   {
     $DBase = new Connect();
     $db = $DBase->connexion();
     $q = $db->prepare('UPDATE produit SET reference = "'.$reference.'", quantité = "'.$quantite.'", prix_unitaire = "'.$prix.'",
-    libelle = "'.$libelle.'", description = "'.$description.'" WHERE id_produit = "'.$id.'";');
+    libelle = "'.$libelle.'", description = "'.$description.'", id_cat = "'.$idCat.'" WHERE id_produit = "'.$id.'";');
     $q->execute();
   }
 

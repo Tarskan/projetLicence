@@ -33,13 +33,14 @@
            <div class="container-fluid">
                <div class="row ml-1 p-2">
                     <div class="col-3">
-                    <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
+                        <div class="row shadow-sm m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <a>Catégorie :</a>
                                 <div class="list-group">
                                     <?php 
                                         for ($i=0; $i < $tailleCategories; $i++) { 
-                                            echo '<a class="list-group-item list-group-item-action" href="cat_prod.php?categorie='.$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a> ';
+                                            echo '<a class="list-group-item list-group-item-action" href="cat_prod.php?categorie='
+                                            .$categories[$i]->getId().'">'. $categories[$i]->getLibelle() . '</a> ';
                                         }
 
                                      ?>

@@ -8,6 +8,7 @@ class Article
 	private $_prix_unitaire = 0;
 	private $_libelle = "";
 	private $_description = "";
+	private $_idCat;
 	private $_categorie = "";
 	private $_chemin = "";
 	private $_nomImage = "";
@@ -36,6 +37,9 @@ class Article
 		}
 		if (isset($donnees['description'])) {
 			$this->_description = $donnees['description'];
+		}
+		if (isset($donnees['id_cat'])) {
+			$this->_idCat = $donnees['id_cat'];
 		}
 		if (isset($donnees['categorie'])) {
 			$this->_categorie = $donnees['categorie'];
@@ -120,11 +124,10 @@ class Article
 		return $this->_pourcentage;
 	}
 
-	public function getDateFin()
+	public function getDateFin()								
 	{
 		return $this->_datefin;
 	}
-
 
 }
 

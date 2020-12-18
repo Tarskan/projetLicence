@@ -119,7 +119,7 @@
                 $("#modalModifProduit").find("#Iprix").val($(this).attr('data-prix'));
                 $("#modalModifProduit").find("#Idescription").val($(this).attr('data-description'));
                 $("#modalModifProduit").find("#Iquantite").val($(this).attr('data-quantite'));
-                $("#modalModifProduit").find("#Icategorie").text($(this).attr('data-categorie'));
+                //$("#modalModifProduit").find("#Icategorie").text($(this).attr('data-categorie'));
                
                 $("#modalModifProduit").modal("show"); 
                 

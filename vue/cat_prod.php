@@ -66,10 +66,10 @@
                         <div class="row m-1 p-3 mb-5 bg-white rounded">
                             <div class="col">
                                 <div class="row">
-<?php
-    $y = 0;
-    for ($i=0; $i < $tailleArticle; $i++) { 
-?>
+                                    <?php
+                                        $y = 0;
+                                        for ($i=0; $i < $tailleArticle; $i++) { 
+                                    ?>
     
                                     <div class="col-4">
                                         <div class="card border border-dark  shadow-sm bg-dark  text-white rounded">
@@ -105,9 +105,9 @@
                                             </div>
                                         </div>
                                     </div>
-<?php
-    }
-?>
+                                    <?php
+                                        }
+                                    ?>
                             </div>
                         </div>
                     </div>

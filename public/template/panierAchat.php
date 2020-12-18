@@ -58,7 +58,7 @@
                         <td>Article Total : <span id="totalCaddie2"><?php echo $panier->nbArticles()?></span> </td>
                     </table>
                 </div>   
-                <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Payer</a>
+                <a href="../controllers/achat.php" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Payer</a>
         </div>
     </div>
 </div>

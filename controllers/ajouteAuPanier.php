@@ -10,9 +10,17 @@
     $db = $DBase->connexion();
     $Art_man = new articleManager();
 
-    $article = $Art_man->getInfo($_GET['id']);
+    if(isset($_GET['id'])){
+        $article = $Art_man->getInfo($_GET['id']);
+        $articlePromo = $Art_man->getPromotionArticle($_GET['id']);
+    }
 
-    $panier->ajouterArticle($article[0]->getId(), 1, $article[0]->getPrix());
+    if($article[0]->getPromotion() == NULL){
+        $panier->ajouterArticle($article[0]->getId(), 1, $article[0]->getPrix());
+    }
+    else{
+        $panier->ajouterArticle($article[0]->getId(), 1, $articlePromo[0]->getPrixPromo());
+    }
 
     $json['error'] = false;
     $json['message'] = 'ça marche';

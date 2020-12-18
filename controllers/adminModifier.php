@@ -35,8 +35,8 @@ if(isset($_POST['CMid']) && isset($_POST['CMlibelle'])){
 }
 
 if(isset($_POST['Mreference']) && isset($_POST['Mlibelle']) && isset($_POST['Mprix']) &&
-isset($_POST['Mdescription']) && isset($_POST['Mquantite']) && isset($_POST['Mid'])) {
-    $Art_man->modifProduit($_POST['Mid'],$_POST['Mreference'],$_POST['Mlibelle'],$_POST['Mprix'],$_POST['Mdescription'],$_POST['Mquantite']);
+isset($_POST['Mdescription']) && isset($_POST['Mquantite']) && isset($_POST['Mid']) && isset($_POST['Mcategorie'])) {
+    $Art_man->modifProduit($_POST['Mid'],$_POST['Mreference'],$_POST['Mlibelle'],$_POST['Mprix'],$_POST['Mdescription'],$_POST['Mquantite'],$_POST['Mcategorie']);
     header('location:../vue/dashboard.php');
 }
 
